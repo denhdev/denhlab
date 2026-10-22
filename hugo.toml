@@ -9,6 +9,10 @@ title = 'denhlab'
 [params]
   description = 'Notes, experiments, and homelab adventures.'
 
+  # Fonts for the landing page and blog cards: a file name from assets/css/typesets/.
+  # Options: 'swiss', 'editorial', 'technical', 'bauhaus'
+  typeset = 'technical'
+
   [params.navbar]
     displayTitle = true
     displayLogo = false

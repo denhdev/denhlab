@@ -12,11 +12,13 @@ Personal site for [denhlab.com](https://denhlab.com/), built with [Hugo](https:/
 | `layouts/home.html` | Landing page template and hero graphic |
 | `layouts/blog/list.html` | Blog card grid (overrides Hextra's list) |
 | `assets/css/custom.css` | Styles for the landing page and blog cards |
+| `assets/css/typesets/` | Font sets for the landing page and cards (pick one with `typeset` in `hugo.toml`) |
+| `static/fonts/` | Self-hosted font files used by the typesets |
 | `hugo.toml` | Site config and navbar / mobile menu entries |
 
 ## Development
 
-Run the dev server with live reload at http://localhost:1313/:
+Run the dev server with live reload at <http://localhost:1313/>:
 
 ```bash
 hugo server
@@ -42,6 +44,23 @@ Then open `http://10.0.0.157:1313/` on the phone. If it won't load, open the por
 ```bash
 sudo firewall-cmd --add-port=1313/tcp
 ```
+
+## Typesets
+
+The landing page and blog cards use one of the font sets in `assets/css/typesets/`, chosen in `hugo.toml`:
+
+```toml
+[params]
+  typeset = 'swiss'    # 'swiss', 'editorial', 'technical' or 'bauhaus'
+```
+
+Try one without editing the config:
+
+```bash
+HUGO_PARAMS_TYPESET=bauhaus hugo server
+```
+
+To add a typeset, copy one of the files, change its `@font-face` rules and `--type-*` variables, put its font files in `static/fonts/`, and set `typeset` to the new file name.
 
 ## Writing content
 

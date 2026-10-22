@@ -1,0 +1,8 @@
+{{- /* Loads the typeset chosen by params.typeset in hugo.toml (a file in assets/css/typesets/). */ -}}
+{{- $typeset := site.Params.typeset | default "swiss" -}}
+{{- with resources.Get (printf "css/typesets/%s.css" $typeset) -}}
+  {{- $css := . | minify | fingerprint -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+{{- else -}}
+  {{- errorf "typeset %q not found: expected a file at assets/css/typesets/%s.css" $typeset $typeset -}}
+{{- end -}}

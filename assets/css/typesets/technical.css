@@ -1,0 +1,28 @@
+/* Technical drawing: Space Grotesk (bold) + JetBrains Mono. */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("/fonts/space-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+:root {
+  --type-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --type-display-weight: 700;
+  --type-display-stretch: 100%;
+  --type-display-tracking: -0.035em;
+  --type-display-leading: 1;
+  --type-card-weight: 700;
+  --type-text: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --type-label: "JetBrains Mono", ui-monospace, monospace;
+}

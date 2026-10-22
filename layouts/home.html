@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+  {{- partial "head.html" . -}}
+  <body class="landing">
+    <main id="content" class="landing-main">
+      <div class="landing-graphic" aria-hidden="true">
+        {{- /* Hero graphic: a stack of rack units with blinking status lights. Swap for an <img> any time. */ -}}
+        <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="landing-glow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="currentColor" stop-opacity=".35" />
+              <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="150" fill="url(#landing-glow)" />
+          {{- range $i, $y := slice 70 116 162 208 }}
+            <g class="landing-unit" style="--i: {{ $i }}">
+              <rect x="70" y="{{ $y }}" width="180" height="38" rx="6" />
+              <line x1="86" y1="{{ add $y 19 }}" x2="170" y2="{{ add $y 19 }}" />
+              <circle class="landing-led" cx="214" cy="{{ add $y 19 }}" r="4" />
+              <circle class="landing-led" cx="232" cy="{{ add $y 19 }}" r="4" />
+            </g>
+          {{- end }}
+        </svg>
+      </div>
+
+      <div class="landing-copy">
+        {{ with .Params.eyebrow }}<p class="landing-eyebrow">{{ . }}</p>{{ end }}
+        <h1 class="landing-title">{{ .Params.headline | default .Site.Title }}</h1>
+        {{ with .Params.tagline }}<p class="landing-tagline">{{ . }}</p>{{ end }}
+        <a class="landing-cta" href="{{ .Params.ctaLink | default "/blog/" | relLangURL }}">
+          {{ .Params.ctaText | default "Enter" }} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </main>
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

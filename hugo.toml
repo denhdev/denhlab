@@ -14,7 +14,7 @@ title = 'denhlab'
   typeset = 'poster'
 
   # Colors for the whole site: a file name from assets/css/palettes/.
-  # Options: 'mono'
+  # Options: 'mono', 'zeta'
   palette = 'mono'
 
   [params.navbar]

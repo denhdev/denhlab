@@ -1,0 +1,73 @@
+/* Zeta: the RX-178 Gundam Mk-II from Zeta Gundam, in both of its paint schemes.
+   Dark mode is the Titans colors (navy armor, gunmetal frame, yellow vents, red chest);
+   light mode is the AEUG colors (warm white armor, navy frame, red feet, yellow vents).
+   Values are sampled from photos of the two models, adjusted where needed for legible contrast.
+   Unlike mono, this palette keeps Hextra's slightly blue grays: they suit both schemes. */
+
+/* ---------- Dark: Titans ---------- */
+
+html.dark {
+  /* Page: near-black with a navy cast, like the shadowed armor */
+  --color-bg: #13151c;
+  --color-fg: #eceef3;                 /* the white "03" markings */
+  --color-muted: #9398a5;              /* light gunmetal */
+
+  /* Labels, the landing eyebrow and button, hover states: the yellow chest vents */
+  --site-accent: #dcb85d;
+
+  /* Landing graphic: navy armor, lifted to read on the dark page */
+  --color-graphic: #6f86c9;
+
+  /* Landing margin guides and crop marks: navy armor, dark then mid */
+  --color-guide: #262c40;
+  --color-crop: #3e5183;
+
+  /* Server status lights: armor blue, chest red, vent yellow (lifted to read on dark) */
+  --color-status-1: #6f86c9;
+  --color-status-2: #d13a40;
+  --color-status-3: #dcb85d;
+
+  /* Blog cards: dark navy panels with navy edges */
+  --color-card-bg: #1a1e2b;
+  --color-card-border: #2e354d;
+  --color-card-shadow: rgb(0 0 0 / 0.5);
+
+  /* Hextra: page background, and links/active nav/sidebar in the armor's navy hue */
+  --hx-color-dark: #13151c;
+  --primary-hue: 224deg;
+  --primary-saturation: 45%;
+}
+
+/* ---------- Light: AEUG ---------- */
+
+:root {
+  /* Page: the warm white armor, lightened to a paper tone */
+  --color-bg: #f7f3ef;
+  --color-fg: #1f2433;                 /* the navy torso, deepened for text */
+  --color-muted: #565c65;              /* frame gray */
+
+  /* Labels, the landing eyebrow and button, hover states: the red feet and chest */
+  --site-accent: #a8352c;
+
+  /* Landing graphic: the navy frame */
+  --color-graphic: #2f3847;
+
+  /* Landing margin guides and crop marks: armor shadow, then frame gray */
+  --color-guide: #e2d8d3;
+  --color-crop: #a0a4a8;
+
+  /* Server status lights: frame navy-blue, red, vent yellow */
+  --color-status-1: #3d5a99;
+  --color-status-2: #bb3a2c;
+  --color-status-3: #daae38;
+
+  /* Blog cards: bright armor panels with a warm edge */
+  --color-card-bg: #fffdfb;
+  --color-card-border: #ddd2cd;
+  --color-card-shadow: rgb(47 56 71 / 0.22);
+
+  /* Hextra: page background, and links/active nav/sidebar in the frame's navy hue */
+  --hx-color-white: #f7f3ef;
+  --primary-hue: 220deg;
+  --primary-saturation: 30%;
+}

@@ -38,6 +38,12 @@
    (assets/css/palettes/*.css): --color-*, --site-accent, and Hextra's --primary-* and grays.
    Nothing in this file should name a color directly. */
 
+/* Hextra fades the bottom of the "On this page" panel and the sidebar footer with a shadow in
+   hard-coded white (#111 in dark mode). Use its page-color variables so palettes that tint the
+   page background don't show a white strip. */
+[class*="shadow-[0_-12px_16px"] { box-shadow: 0 -12px 16px var(--hx-color-white); }
+html.dark [class*="shadow-[0_-12px_16px"] { box-shadow: 0 -12px 16px var(--hx-color-dark); }
+
 /* ---------- Typeset across the site ---------- */
 
 /* Hextra sets every page's font from --hx-font-sans; point it at the typeset's text face. */
@@ -171,7 +177,7 @@ body:not(.landing) #content h1 {
 
 .landing-graphic {
   width: min(70vw, 22rem);
-  color: var(--landing-accent);
+  color: var(--color-graphic);
 }
 
 .landing-graphic svg { width: 100%; height: auto; display: block; }

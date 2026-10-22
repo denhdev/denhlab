@@ -13,6 +13,9 @@ html.dark {
   /* Labels, the landing eyebrow and button, hover states */
   --site-accent: #fafaf9;
 
+  /* Landing graphic: its outlines and the glow behind it */
+  --color-graphic: #fafaf9;
+
   /* Landing margin guides and crop marks */
   --color-guide: #44403c;
   --color-crop: #57534e;
@@ -40,6 +43,8 @@ html.dark {
   --color-muted: #57534e;
 
   --site-accent: #1c1917;
+
+  --color-graphic: #1c1917;
 
   --color-guide: #d6d3d1;
   --color-crop: #a8a29e;

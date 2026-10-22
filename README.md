@@ -62,6 +62,23 @@ HUGO_PARAMS_TYPESET=bauhaus hugo server
 
 To add a typeset, copy one of the files, change its `@font-face` rules and `--type-*` variables, put its font files in `static/fonts/`, and set `typeset` to the new file name.
 
+## Palettes
+
+All site colors come from one of the palettes in `assets/css/palettes/`, chosen in `hugo.toml`:
+
+```toml
+[params]
+  palette = 'mono'
+```
+
+Each palette defines the same set of colors twice: dark mode under `html.dark`, light mode under `:root`. `custom.css` only refers to these names (`--color-bg`, `--color-fg`, `--site-accent`, …) and never names a color directly. Try one without editing the config:
+
+```bash
+HUGO_PARAMS_PALETTE=mono hugo server
+```
+
+To add a palette, copy `mono.css`, change its values in both modes, and set `palette` to the new file name.
+
 ## Writing content
 
 ```bash

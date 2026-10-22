@@ -1,0 +1,75 @@
+/* Mono: warm-neutral grays throughout, with color reserved for the server status lights.
+   Every color the site uses is defined here; custom.css only refers to these names.
+   Light values sit on :root, dark values on html.dark (Hextra adds the .dark class). */
+
+/* ---------- Dark ---------- */
+
+html.dark {
+  /* Page */
+  --color-bg: #0c0a09;
+  --color-fg: #fafaf9;
+  --color-muted: #a8a29e;
+
+  /* Labels, the landing eyebrow and button, hover states */
+  --site-accent: #fafaf9;
+
+  /* Landing margin guides and crop marks */
+  --color-guide: #44403c;
+  --color-crop: #57534e;
+
+  /* Server status lights on the landing graphic, left to right */
+  --color-status-1: #2563eb;
+  --color-status-2: #dc2626;
+  --color-status-3: #eab308;
+
+  /* Blog cards */
+  --color-card-bg: rgb(255 255 255 / 0.03);
+  --color-card-border: rgb(255 255 255 / 0.1);
+  --color-card-shadow: rgb(0 0 0 / 0.25);
+
+  /* Hextra derives links, active nav, sidebar and focus colors from --primary-*.
+     Zero saturation keeps them neutral. */
+  --primary-saturation: 0%;
+}
+
+/* ---------- Light ---------- */
+
+:root {
+  --color-bg: #fafaf9;
+  --color-fg: #1c1917;
+  --color-muted: #57534e;
+
+  --site-accent: #1c1917;
+
+  --color-guide: #d6d3d1;
+  --color-crop: #a8a29e;
+
+  --color-status-1: #2563eb;
+  --color-status-2: #dc2626;
+  --color-status-3: #eab308;
+
+  --color-card-bg: #fff;
+  --color-card-border: #d6d3d1;
+  --color-card-shadow: rgb(0 0 0 / 0.25);
+
+  --primary-saturation: 0%;
+}
+
+/* ---------- Hextra grays (both modes) ----------
+   Hextra's slate and gray shades carry a slight blue tint; same lightness, no color. */
+
+:root {
+  --hx-color-gray-50: oklch(98.5% 0 0);
+  --hx-color-gray-100: oklch(96.7% 0 0);
+  --hx-color-gray-200: oklch(92.8% 0 0);
+  --hx-color-gray-300: oklch(87.2% 0 0);
+  --hx-color-gray-400: oklch(70.7% 0 0);
+  --hx-color-gray-500: oklch(55.1% 0 0);
+  --hx-color-gray-600: oklch(44.6% 0 0);
+  --hx-color-gray-700: oklch(37.3% 0 0);
+  --hx-color-gray-800: oklch(27.8% 0 0);
+  --hx-color-gray-900: oklch(21% 0 0);
+  --hx-color-slate-50: oklch(98.4% 0 0);
+  --hx-color-slate-100: oklch(96.8% 0 0);
+  --hx-color-slate-900: oklch(20.8% 0 0);
+}

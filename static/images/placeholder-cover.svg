@@ -2,19 +2,19 @@
   <!-- Generic homelab cover (monochrome): server rack, terminal window, and network map on a dark grid. -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#121212" />
-      <stop offset="1" stop-color="#181818" />
+      <stop offset="0" stop-color="#676767" />
+      <stop offset="1" stop-color="#6e6e6e" />
     </linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#2a2a2a" stroke-width="1" />
+      <path d="M40 0H0V40" fill="none" stroke="#818181" stroke-width="1" />
     </pattern>
     <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#c1c1c1" stop-opacity="0.18" />
-      <stop offset="1" stop-color="#c1c1c1" stop-opacity="0" />
+      <stop offset="0" stop-color="#f3f3f3" stop-opacity="0.18" />
+      <stop offset="1" stop-color="#f3f3f3" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="unit" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#343434" />
-      <stop offset="1" stop-color="#242424" />
+      <stop offset="0" stop-color="#8c8c8c" />
+      <stop offset="1" stop-color="#7b7b7b" />
     </linearGradient>
   </defs>
 
@@ -24,10 +24,10 @@
 
   <!-- Rack cabinet -->
   <g transform="translate(200 90)">
-    <rect width="440" height="720" rx="14" fill="#161616" stroke="#404040" stroke-width="4" />
-    <rect x="24" y="24" width="12" height="672" fill="#292929" />
-    <rect x="404" y="24" width="12" height="672" fill="#292929" />
-    <g fill="#545454">
+    <rect width="440" height="720" rx="14" fill="#6c6c6c" stroke="#b3b3b3" stroke-width="4" />
+    <rect x="24" y="24" width="12" height="672" fill="#808080" />
+    <rect x="404" y="24" width="12" height="672" fill="#808080" />
+    <g fill="#d1d1d1">
       <circle cx="30" cy="60" r="3" /><circle cx="30" cy="160" r="3" /><circle cx="30" cy="260" r="3" />
       <circle cx="30" cy="360" r="3" /><circle cx="30" cy="460" r="3" /><circle cx="30" cy="560" r="3" />
       <circle cx="410" cy="60" r="3" /><circle cx="410" cy="160" r="3" /><circle cx="410" cy="260" r="3" />
@@ -36,8 +36,8 @@
 
     <!-- Patch panel / switch with ports -->
     <g transform="translate(40 44)">
-      <rect width="360" height="56" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <g fill="#121212">
+      <rect width="360" height="56" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <g fill="#676767">
         <rect x="16" y="14" width="18" height="14" rx="2" /><rect x="40" y="14" width="18" height="14" rx="2" />
         <rect x="64" y="14" width="18" height="14" rx="2" /><rect x="88" y="14" width="18" height="14" rx="2" />
         <rect x="112" y="14" width="18" height="14" rx="2" /><rect x="136" y="14" width="18" height="14" rx="2" />
@@ -45,83 +45,83 @@
         <rect x="208" y="14" width="18" height="14" rx="2" /><rect x="232" y="14" width="18" height="14" rx="2" />
         <rect x="256" y="14" width="18" height="14" rx="2" /><rect x="280" y="14" width="18" height="14" rx="2" />
       </g>
-      <g fill="#acacac">
+      <g fill="#ededed">
         <rect x="20" y="34" width="10" height="4" /><rect x="44" y="34" width="10" height="4" />
         <rect x="68" y="34" width="10" height="4" /><rect x="116" y="34" width="10" height="4" />
         <rect x="140" y="34" width="10" height="4" /><rect x="188" y="34" width="10" height="4" />
         <rect x="236" y="34" width="10" height="4" />
       </g>
-      <g fill="#b1b1b1"><rect x="92" y="34" width="10" height="4" /><rect x="260" y="34" width="10" height="4" /></g>
-      <circle cx="332" cy="28" r="6" fill="#c1c1c1" />
+      <g fill="#efefef"><rect x="92" y="34" width="10" height="4" /><rect x="260" y="34" width="10" height="4" /></g>
+      <circle cx="332" cy="28" r="6" fill="#f3f3f3" />
     </g>
 
     <!-- 2U servers -->
     <g transform="translate(40 150)">
-      <rect width="360" height="96" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <g fill="#181818">
+      <rect width="360" height="96" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <g fill="#6e6e6e">
         <rect x="16" y="16" width="44" height="64" rx="3" /><rect x="66" y="16" width="44" height="64" rx="3" />
         <rect x="116" y="16" width="44" height="64" rx="3" /><rect x="166" y="16" width="44" height="64" rx="3" />
       </g>
-      <g fill="#acacac"><circle cx="38" cy="70" r="3" /><circle cx="88" cy="70" r="3" /><circle cx="138" cy="70" r="3" /><circle cx="188" cy="70" r="3" /></g>
-      <g stroke="#545454" stroke-width="3"><path d="M236 30H316M236 44H316M236 58H316M236 72H316" /></g>
-      <circle cx="340" cy="30" r="7" fill="#c1c1c1" /><circle cx="340" cy="56" r="5" fill="#acacac" />
+      <g fill="#ededed"><circle cx="38" cy="70" r="3" /><circle cx="88" cy="70" r="3" /><circle cx="138" cy="70" r="3" /><circle cx="188" cy="70" r="3" /></g>
+      <g stroke="#d1d1d1" stroke-width="3"><path d="M236 30H316M236 44H316M236 58H316M236 72H316" /></g>
+      <circle cx="340" cy="30" r="7" fill="#f3f3f3" /><circle cx="340" cy="56" r="5" fill="#ededed" />
     </g>
     <g transform="translate(40 262)">
-      <rect width="360" height="96" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <g fill="#181818">
+      <rect width="360" height="96" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <g fill="#6e6e6e">
         <rect x="16" y="16" width="44" height="64" rx="3" /><rect x="66" y="16" width="44" height="64" rx="3" />
         <rect x="116" y="16" width="44" height="64" rx="3" /><rect x="166" y="16" width="44" height="64" rx="3" />
       </g>
-      <g fill="#acacac"><circle cx="38" cy="70" r="3" /><circle cx="88" cy="70" r="3" /><circle cx="188" cy="70" r="3" /></g>
-      <circle cx="138" cy="70" r="3" fill="#b1b1b1" />
-      <g stroke="#545454" stroke-width="3"><path d="M236 30H316M236 44H316M236 58H316M236 72H316" /></g>
-      <circle cx="340" cy="30" r="7" fill="#c1c1c1" /><circle cx="340" cy="56" r="5" fill="#acacac" />
+      <g fill="#ededed"><circle cx="38" cy="70" r="3" /><circle cx="88" cy="70" r="3" /><circle cx="188" cy="70" r="3" /></g>
+      <circle cx="138" cy="70" r="3" fill="#efefef" />
+      <g stroke="#d1d1d1" stroke-width="3"><path d="M236 30H316M236 44H316M236 58H316M236 72H316" /></g>
+      <circle cx="340" cy="30" r="7" fill="#f3f3f3" /><circle cx="340" cy="56" r="5" fill="#ededed" />
     </g>
 
     <!-- 1U mini nodes -->
     <g transform="translate(40 374)">
-      <rect width="360" height="44" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <rect x="16" y="14" width="140" height="16" rx="2" fill="#181818" />
-      <circle cx="300" cy="22" r="5" fill="#acacac" /><circle cx="320" cy="22" r="5" fill="#acacac" /><circle cx="340" cy="22" r="5" fill="#c1c1c1" />
+      <rect width="360" height="44" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <rect x="16" y="14" width="140" height="16" rx="2" fill="#6e6e6e" />
+      <circle cx="300" cy="22" r="5" fill="#ededed" /><circle cx="320" cy="22" r="5" fill="#ededed" /><circle cx="340" cy="22" r="5" fill="#f3f3f3" />
     </g>
     <g transform="translate(40 428)">
-      <rect width="360" height="44" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <rect x="16" y="14" width="140" height="16" rx="2" fill="#181818" />
-      <circle cx="300" cy="22" r="5" fill="#acacac" /><circle cx="320" cy="22" r="5" fill="#b1b1b1" /><circle cx="340" cy="22" r="5" fill="#c1c1c1" />
+      <rect width="360" height="44" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <rect x="16" y="14" width="140" height="16" rx="2" fill="#6e6e6e" />
+      <circle cx="300" cy="22" r="5" fill="#ededed" /><circle cx="320" cy="22" r="5" fill="#efefef" /><circle cx="340" cy="22" r="5" fill="#f3f3f3" />
     </g>
 
     <!-- Blank panel and UPS -->
-    <rect x="40" y="484" width="360" height="44" rx="4" fill="#1e1e1e" stroke="#313131" stroke-width="2" />
+    <rect x="40" y="484" width="360" height="44" rx="4" fill="#747474" stroke="#898989" stroke-width="2" />
     <g transform="translate(40 540)">
-      <rect width="360" height="132" rx="4" fill="url(#unit)" stroke="#494949" stroke-width="2" />
-      <rect x="20" y="22" width="120" height="56" rx="4" fill="#242424" stroke="#484848" stroke-width="2" />
-      <text x="80" y="60" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="26" fill="#c4c4c4">100%</text>
-      <g stroke="#545454" stroke-width="3"><path d="M170 36H330M170 52H330M170 68H330M170 84H330M170 100H330" /></g>
-      <circle cx="40" cy="104" r="6" fill="#acacac" />
+      <rect width="360" height="132" rx="4" fill="url(#unit)" stroke="#cdcdcd" stroke-width="2" />
+      <rect x="20" y="22" width="120" height="56" rx="4" fill="#7b7b7b" stroke="#cdcdcd" stroke-width="2" />
+      <text x="80" y="60" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="26" fill="#f4f4f4">100%</text>
+      <g stroke="#d1d1d1" stroke-width="3"><path d="M170 36H330M170 52H330M170 68H330M170 84H330M170 100H330" /></g>
+      <circle cx="40" cy="104" r="6" fill="#ededed" />
     </g>
   </g>
 
   <!-- Terminal window -->
   <g transform="translate(760 130)">
-    <rect width="660" height="380" rx="14" fill="#0f0f0f" stroke="#404040" stroke-width="3" />
-    <path d="M0 14a14 14 0 0 1 14-14h632a14 14 0 0 1 14 14v30H0Z" fill="#292929" />
-    <circle cx="28" cy="22" r="7" fill="#848484" /><circle cx="52" cy="22" r="7" fill="#b1b1b1" /><circle cx="76" cy="22" r="7" fill="#acacac" />
-    <text x="330" y="28" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#a2a2a2">denh@homelab: ~</text>
-    <text x="28" y="92" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24" fill="#c1c1c1">$ <tspan fill="#e7e7e7">▍</tspan></text>
+    <rect width="660" height="380" rx="14" fill="#646464" stroke="#b3b3b3" stroke-width="3" />
+    <path d="M0 14a14 14 0 0 1 14-14h632a14 14 0 0 1 14 14v30H0Z" fill="#808080" />
+    <circle cx="28" cy="22" r="7" fill="#e1e1e1" /><circle cx="52" cy="22" r="7" fill="#efefef" /><circle cx="76" cy="22" r="7" fill="#ededed" />
+    <text x="330" y="28" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#eaeaea">denh@homelab: ~</text>
+    <text x="28" y="92" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24" fill="#f3f3f3">$ <tspan fill="#ffffff">▍</tspan></text>
   </g>
 
   <!-- Network map -->
   <g transform="translate(760 560)">
-    <g stroke="#404040" stroke-width="3" fill="none">
+    <g stroke="#b3b3b3" stroke-width="3" fill="none">
       <path d="M330 40 L130 150 M330 40 L330 150 M330 40 L530 150 M130 150 L60 230 M130 150 L200 230 M530 150 L600 230" />
     </g>
-    <g stroke="#c1c1c1" stroke-width="3" fill="#161616">
+    <g stroke="#f3f3f3" stroke-width="3" fill="#6c6c6c">
       <circle cx="330" cy="40" r="26" />
       <circle cx="130" cy="150" r="20" /><circle cx="330" cy="150" r="20" /><circle cx="530" cy="150" r="20" />
     </g>
-    <g stroke="#545454" stroke-width="3" fill="#161616">
+    <g stroke="#d1d1d1" stroke-width="3" fill="#6c6c6c">
       <circle cx="60" cy="230" r="14" /><circle cx="200" cy="230" r="14" /><circle cx="600" cy="230" r="14" />
     </g>
-    <circle cx="330" cy="40" r="8" fill="#c1c1c1" />
+    <circle cx="330" cy="40" r="8" fill="#f3f3f3" />
   </g>
 </svg>

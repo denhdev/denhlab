@@ -33,33 +33,10 @@
   --type-label: ui-monospace, monospace;
 }
 
-/* ---------- Color ---------- */
-
-/* Monochrome site. Hextra derives all its accent shades (links, active nav, sidebar, focus) from
-   --primary-*; zero saturation turns them into neutral grays. */
-:root, .dark { --primary-saturation: 0%; }
-
-/* Hextra's slate and gray shades carry a slight blue tint; same lightness, no color. */
-:root {
-  --hx-color-gray-50: oklch(98.5% 0 0);
-  --hx-color-gray-100: oklch(96.7% 0 0);
-  --hx-color-gray-200: oklch(92.8% 0 0);
-  --hx-color-gray-300: oklch(87.2% 0 0);
-  --hx-color-gray-400: oklch(70.7% 0 0);
-  --hx-color-gray-500: oklch(55.1% 0 0);
-  --hx-color-gray-600: oklch(44.6% 0 0);
-  --hx-color-gray-700: oklch(37.3% 0 0);
-  --hx-color-gray-800: oklch(27.8% 0 0);
-  --hx-color-gray-900: oklch(21% 0 0);
-  --hx-color-slate-50: oklch(98.4% 0 0);
-  --hx-color-slate-100: oklch(96.8% 0 0);
-  --hx-color-slate-900: oklch(20.8% 0 0);
-}
-
-/* The site's accent for labels, the landing eyebrow and button, and hover states. Neutral ink for
-   now; this is the one place to reintroduce color deliberately. */
-:root { --site-accent: #1c1917; }
-html.dark { --site-accent: #fafaf9; }
+/* ---------- Color ----------
+   All colors come from the palette chosen by params.palette in hugo.toml
+   (assets/css/palettes/*.css): --color-*, --site-accent, and Hextra's --primary-* and grays.
+   Nothing in this file should name a color directly. */
 
 /* ---------- Typeset across the site ---------- */
 
@@ -115,25 +92,16 @@ body:not(.landing) #content h1 {
 
 /* ---------- Landing page ---------- */
 
+/* Landing colors, from the palette. */
 .landing {
-  --landing-bg: #fafaf9;
-  --landing-fg: #1c1917;
-  --landing-muted: #57534e;
+  --landing-bg: var(--color-bg);
+  --landing-fg: var(--color-fg);
+  --landing-muted: var(--color-muted);
   --landing-accent: var(--site-accent);
-  /* Margin guides and crop marks: a gray just off the background, so they read as a quiet layer. */
-  --landing-guide: #d6d3d1;
-  /* Crop marks: a step stronger than the guides, so they stay distinct on any screen. */
-  --landing-crop: #a8a29e;
+  --landing-guide: var(--color-guide);
+  --landing-crop: var(--color-crop);
   background: var(--landing-bg);
   color: var(--landing-fg);
-}
-
-html.dark .landing {
-  --landing-bg: #0c0a09;
-  --landing-fg: #fafaf9;
-  --landing-muted: #a8a29e;
-  --landing-guide: #44403c;
-  --landing-crop: #57534e;
 }
 
 /* ---------- Landing margin guides and crop marks ----------
@@ -229,9 +197,9 @@ html.dark .landing {
 
 /* Status lights: one deliberate pop of primary color, the only color on the landing page.
    Each color blinks on its own offset so the rack doesn't pulse in unison. */
-.landing-led.led-blue { fill: #2563eb; }
-.landing-led.led-red { fill: #dc2626; animation-delay: calc(var(--i) * 0.35s + 0.8s); }
-.landing-led.led-yellow { fill: #eab308; animation-delay: calc(var(--i) * 0.35s + 1.6s); }
+.landing-led.led-blue { fill: var(--color-status-1); }
+.landing-led.led-red { fill: var(--color-status-2); animation-delay: calc(var(--i) * 0.35s + 0.8s); }
+.landing-led.led-yellow { fill: var(--color-status-3); animation-delay: calc(var(--i) * 0.35s + 1.6s); }
 
 @keyframes landing-blink {
   0%, 70%, 100% { opacity: 1; }
@@ -331,24 +299,19 @@ html.dark .landing {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgb(0 0 0 / 0.08);
+  border: 1px solid var(--color-card-border);
   border-radius: 0.75rem;
-  background: #fff;
+  background: var(--color-card-bg);
   color: inherit;
   text-decoration: none;
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-html.dark .blog-card {
-  background: rgb(255 255 255 / 0.03);
-  border-color: rgb(255 255 255 / 0.1);
 }
 
 .blog-card:hover,
 .blog-card:focus-visible {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--site-accent) 45%, transparent);
-  box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.25);
+  box-shadow: 0 8px 24px -12px var(--color-card-shadow);
 }
 
 .blog-card-image {

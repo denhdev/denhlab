@@ -1,8 +1,14 @@
-{{- /* Loads the typeset chosen by params.typeset in hugo.toml (a file in assets/css/typesets/). */ -}}
-{{- $typeset := site.Params.typeset | default "swiss" -}}
-{{- with resources.Get (printf "css/typesets/%s.css" $typeset) -}}
-  {{- $css := . | minify | fingerprint -}}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
-{{- else -}}
-  {{- errorf "typeset %q not found: expected a file at assets/css/typesets/%s.css" $typeset $typeset -}}
+{{- /* Loads the typeset and palette chosen by params.typeset and params.palette in hugo.toml
+       (files in assets/css/typesets/ and assets/css/palettes/). */ -}}
+{{- $choices := slice
+  (dict "kind" "typeset" "name" (site.Params.typeset | default "swiss") "dir" "typesets")
+  (dict "kind" "palette" "name" (site.Params.palette | default "mono") "dir" "palettes")
+-}}
+{{- range $choices -}}
+  {{- with resources.Get (printf "css/%s/%s.css" .dir .name) -}}
+    {{- $css := . | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+  {{- else -}}
+    {{- errorf "%s %q not found: expected a file at assets/css/%s/%s.css" .kind .name .dir .name -}}
+  {{- end -}}
 {{- end -}}

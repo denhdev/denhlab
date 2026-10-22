@@ -13,6 +13,10 @@ title = 'denhlab'
   # Options: 'swiss', 'editorial', 'technical', 'bauhaus', 'poster'
   typeset = 'poster'
 
+  # Colors for the whole site: a file name from assets/css/palettes/.
+  # Options: 'mono'
+  palette = 'mono'
+
   [params.navbar]
     displayTitle = true
     displayLogo = false

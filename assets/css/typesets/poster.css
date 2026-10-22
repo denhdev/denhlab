@@ -23,11 +23,16 @@
   --type-display-size: clamp(5rem, 22vw, 9.5rem);
   --type-display-weight: 400;
   --type-display-stretch: 100%;
-  --type-display-tracking: -0.025em;
+  --type-display-tracking: -0.015em;
   --type-display-leading: 0.85;
   --type-display-indent: -0.03em;
-  --type-card-size: 1.5rem;
-  --type-card-weight: 400;
+  /* Anton is for the landing headline only; headings elsewhere use medium Archivo. */
+  --type-heading: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --type-heading-weight: 500;
+  --type-heading-stretch: 100%;
+  --type-heading-tracking: -0.01em;
+  --type-card-size: 1.25rem;
+  --type-card-weight: 500;
   --type-text: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --type-tagline-size: 0.9375rem;
   --type-tagline-weight: 700;

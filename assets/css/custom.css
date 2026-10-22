@@ -14,6 +14,13 @@
   --type-display-indent: 0em;
   /* How *emphasis* in the headline renders; only typesets with a real italic turn it on. */
   --type-display-em-style: normal;
+  --type-page-title-size: 2.25rem;
+  /* Headings outside the landing page (page titles, section headings, card titles, navbar name).
+     They follow the display face unless a typeset gives them a quieter one. */
+  --type-heading: var(--type-display);
+  --type-heading-weight: var(--type-display-weight);
+  --type-heading-stretch: var(--type-display-stretch);
+  --type-heading-tracking: var(--type-display-tracking);
   --type-card-size: 1.25rem;
   --type-card-weight: 700;
   --type-text: ui-sans-serif, system-ui, sans-serif;
@@ -24,6 +31,59 @@
   --type-byline-size: 0.875rem;
   --type-byline-tracking: 0.04em;
   --type-label: ui-monospace, monospace;
+}
+
+/* ---------- Typeset across the site ---------- */
+
+/* Hextra sets every page's font from --hx-font-sans; point it at the typeset's text face. */
+:root { --hx-font-sans: var(--type-text); }
+
+/* Page titles (blog list, posts, homelab pages) and section headings use the display face.
+   Excludes the landing page, which styles its own headline. */
+body:not(.landing) #content h1,
+body:not(.landing) .content h2 {
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-stretch: var(--type-heading-stretch);
+  letter-spacing: var(--type-heading-tracking);
+}
+
+body:not(.landing) #content h1 {
+  font-size: var(--type-page-title-size);
+  line-height: 1;
+}
+
+/* Smaller headings: same face and weight as h2, so the hierarchy comes from size alone
+   (Hextra's semibold made them heavier than the h2 above them). */
+.content :is(h3, h4, h5, h6) {
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-stretch: var(--type-heading-stretch);
+}
+
+/* Labels share the landing eyebrow's treatment: small, tracked-out capitals.
+   Post date under the title (Hextra's blog/single.html meta line) and the "On this page" label. */
+#content > .hx\:mt-4.hx\:mb-16,
+.hextra-toc p:first-child {
+  font-family: var(--type-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+#content > .hx\:mt-4.hx\:mb-16 { color: hsl(var(--primary-hue) 90% 45%); }
+html.dark #content > .hx\:mt-4.hx\:mb-16 { color: hsl(var(--primary-hue) 90% 65%); }
+
+.hextra-toc p:first-child { opacity: 0.55; }
+
+/* Site name in the navbar, in the heading face. */
+.hextra-nav-container nav > a:first-child > span {
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-stretch: var(--type-heading-stretch);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ---------- Landing page ---------- */
@@ -226,14 +286,20 @@ html.dark .blog-card {
   flex: 1;
 }
 
+/* Date and tags use the landing eyebrow's treatment: small, tracked-out capitals. */
 .blog-card-date {
   font-family: var(--type-label);
-  font-size: 0.8rem;
-  opacity: 0.6;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--primary-hue) 90% 45%);
 }
 
+html.dark .blog-card-date { color: hsl(var(--primary-hue) 90% 65%); }
+
 .blog-card-title {
-  font-family: var(--type-display);
+  font-family: var(--type-heading);
   font-size: var(--type-card-size);
   font-weight: var(--type-card-weight);
   line-height: 1.3;
@@ -257,8 +323,9 @@ html.dark .blog-card {
   margin-top: auto;
   padding-top: 0.5rem;
   font-family: var(--type-label);
-  font-size: 0.8rem;
-  color: hsl(var(--primary-hue) 90% 45%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
 }
-
-html.dark .blog-card-tags { color: hsl(var(--primary-hue) 90% 70%); }

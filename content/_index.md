@@ -1,7 +1,7 @@
 +++
 title = 'denhlab'
 [params]
-  eyebrow = 'Personal, but production lab'
+  eyebrow = 'Personal, but production grade'
   # *Asterisks* mark emphasis; it shows as italic only in typesets that turn it on (editorial).
   headline = 'DENHLAB'
   tagline = 'An architect’s homelab'

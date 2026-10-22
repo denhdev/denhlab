@@ -2,6 +2,15 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{- partial "head.html" . -}}
   <body class="landing">
+    {{- /* Print-sheet margin guides with crop marks on each corner. */}}
+    <div class="landing-guides" aria-hidden="true">
+      <span class="guide guide-top"></span><span class="guide guide-bottom"></span>
+      <span class="guide guide-left"></span><span class="guide guide-right"></span>
+      <span class="crop crop-tl-h"></span><span class="crop crop-tl-v"></span>
+      <span class="crop crop-tr-h"></span><span class="crop crop-tr-v"></span>
+      <span class="crop crop-bl-h"></span><span class="crop crop-bl-v"></span>
+      <span class="crop crop-br-h"></span><span class="crop crop-br-v"></span>
+    </div>
     <main id="content" class="landing-main">
       <div class="landing-graphic" aria-hidden="true">
         {{- /* Hero graphic: a stack of rack units with blinking status lights. Swap for an <img> any time. */ -}}
@@ -16,9 +25,10 @@
           {{- range $i, $y := slice 70 116 162 208 }}
             <g class="landing-unit" style="--i: {{ $i }}">
               <rect x="70" y="{{ $y }}" width="180" height="38" rx="6" />
-              <line x1="86" y1="{{ add $y 19 }}" x2="170" y2="{{ add $y 19 }}" />
-              <circle class="landing-led" cx="214" cy="{{ add $y 19 }}" r="4" />
-              <circle class="landing-led" cx="232" cy="{{ add $y 19 }}" r="4" />
+              <line x1="86" y1="{{ add $y 19 }}" x2="160" y2="{{ add $y 19 }}" />
+              <circle class="landing-led led-blue" cx="196" cy="{{ add $y 19 }}" r="4" />
+              <circle class="landing-led led-red" cx="214" cy="{{ add $y 19 }}" r="4" />
+              <circle class="landing-led led-yellow" cx="232" cy="{{ add $y 19 }}" r="4" />
             </g>
           {{- end }}
         </svg>

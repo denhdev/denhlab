@@ -10,8 +10,8 @@ title = 'denhlab'
   description = 'Notes, experiments, and homelab adventures.'
 
   # Fonts for the landing page and blog cards: a file name from assets/css/typesets/.
-  # Options: 'swiss', 'editorial', 'technical', 'bauhaus'
-  typeset = 'technical'
+  # Options: 'swiss', 'editorial', 'technical', 'bauhaus', 'poster'
+  typeset = 'poster'
 
   [params.navbar]
     displayTitle = true

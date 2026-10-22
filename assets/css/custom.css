@@ -9,11 +9,20 @@
   --type-display-stretch: 100%;
   --type-display-tracking: -0.035em;
   --type-display-leading: 1.02;
+  /* Pulls the headline left by its first letter's side bearing so its stroke lines up with the
+     text below when left-aligned. Large type makes the font's built-in spacing visible. */
+  --type-display-indent: 0em;
   /* How *emphasis* in the headline renders; only typesets with a real italic turn it on. */
   --type-display-em-style: normal;
   --type-card-size: 1.25rem;
   --type-card-weight: 700;
   --type-text: ui-sans-serif, system-ui, sans-serif;
+  --type-tagline-size: 1.125rem;
+  --type-tagline-weight: 400;
+  --type-tagline-tracking: normal;
+  --type-tagline-transform: none;
+  --type-byline-size: 0.875rem;
+  --type-byline-tracking: 0.04em;
   --type-label: ui-monospace, monospace;
 }
 
@@ -98,6 +107,7 @@ html.dark .landing {
 
 @media (min-width: 768px) {
   .landing-copy { text-align: left; }
+  .landing-title { margin-left: var(--type-display-indent); }
 }
 
 .landing-eyebrow {
@@ -125,10 +135,23 @@ html.dark .landing {
 .landing-tagline {
   font-family: var(--type-text);
   margin-top: 1.25rem;
-  font-size: 1.125rem;
+  font-size: var(--type-tagline-size);
+  font-weight: var(--type-tagline-weight);
+  letter-spacing: var(--type-tagline-tracking);
+  text-transform: var(--type-tagline-transform);
   line-height: 1.6;
   color: var(--landing-muted);
   text-wrap: pretty;
+}
+
+.landing-byline {
+  margin-top: 0.75rem;
+  font-family: var(--type-label);
+  font-size: var(--type-byline-size);
+  letter-spacing: var(--type-byline-tracking);
+  line-height: 1.6;
+  color: var(--landing-muted);
+  text-wrap: balance;
 }
 
 .landing-cta {

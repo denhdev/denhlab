@@ -28,6 +28,7 @@
         {{ with .Params.eyebrow }}<p class="landing-eyebrow">{{ . }}</p>{{ end }}
         <h1 class="landing-title">{{ .Params.headline | default .Site.Title | markdownify }}</h1>
         {{ with .Params.tagline }}<p class="landing-tagline">{{ . }}</p>{{ end }}
+        {{ with .Params.byline }}<p class="landing-byline">{{ . }}</p>{{ end }}
         <a class="landing-cta" href="{{ .Params.ctaLink | default "/blog/" | relLangURL }}">
           {{ .Params.ctaText | default "Enter" }} <span aria-hidden="true">→</span>
         </a>

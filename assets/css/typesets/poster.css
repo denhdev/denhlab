@@ -1,0 +1,47 @@
+/* Poster: Anton (condensed, tracked slightly tight) + Archivo in widely spaced capitals.
+   Modeled on record-cover typography: a big condensed word over a small tracked-out line. */
+
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/anton-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url("/fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+}
+
+:root {
+  --type-display: "Anton", "Arial Narrow", sans-serif;
+  --type-display-size: clamp(5rem, 22vw, 9.5rem);
+  --type-display-weight: 400;
+  --type-display-stretch: 100%;
+  --type-display-tracking: -0.025em;
+  --type-display-leading: 0.85;
+  --type-display-indent: -0.03em;
+  --type-card-size: 1.5rem;
+  --type-card-weight: 400;
+  --type-text: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --type-tagline-size: 0.9375rem;
+  --type-tagline-weight: 700;
+  --type-tagline-tracking: 0.42em;
+  --type-tagline-transform: uppercase;
+  --type-byline-size: 0.75rem;
+  --type-byline-tracking: 0.2em;
+  --type-label: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Tighter spacing on phones so the tagline and byline each hold one line. */
+@media (max-width: 480px) {
+  :root {
+    --type-tagline-tracking: 0.26em;
+    --type-byline-tracking: 0.06em;
+  }
+}

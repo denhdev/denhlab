@@ -51,7 +51,7 @@ The landing page and blog cards use one of the font sets in `assets/css/typesets
 
 ```toml
 [params]
-  typeset = 'swiss'    # 'swiss', 'editorial', 'technical' or 'bauhaus'
+  typeset = 'poster'   # 'swiss', 'editorial', 'technical', 'bauhaus' or 'poster'
 ```
 
 Try one without editing the config:

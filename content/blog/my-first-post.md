@@ -1,13 +1,15 @@
 +++
 date = '2026-10-22T11:50:25-07:00'
 draft = false
-title = 'My First Post'
+title = 'Typography Test'
 image = '/images/placeholder-cover.svg'
 tags = ['homelab', '3d-printing']
 summary = 'A style test: every kind of content a post can have, so the typography can be checked in one place.'
 +++
 
-The old rack was black, loud and hard to service. This rebuild prints the enclosure in white PETG and treats each node like a capsule: a standard box, four bolts, swap rather than repair. Visit the [Hugo](https://gohugo.io) website for the site generator behind this blog.
+What follows on this page is a style test: various kinds of content a post can have, so the typography can be checked in one place.
+
+The old rack was black, loud and hard to service. This rebuild prints the enclosure in white PETG and treats each node like a capsule: a standard box, four bolts, swap rather than repair.
 
 ## Parts list
 

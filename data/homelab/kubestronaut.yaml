@@ -1,0 +1,17 @@
+# Kubestronaut progress: the five CNCF Kubernetes certifications.
+# Rendered by {{< kubestronaut >}}. Set passed (YYYY-MM) when an exam is passed; the count follows.
+
+expires: March 2027
+certs:
+  - code: KCNA
+    name: Kubernetes and Cloud Native Associate
+    passed: 2026-02
+  - code: KCSA
+    name: Kubernetes and Cloud Native Security Associate
+  - code: CKA
+    name: Certified Kubernetes Administrator
+  - code: CKAD
+    name: Certified Kubernetes Application Developer
+    passed: 2025-05
+  - code: CKS
+    name: Certified Kubernetes Security Specialist

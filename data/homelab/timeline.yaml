@@ -1,0 +1,194 @@
+# Hardware timeline, from the "daikon.devlab Hardware Tracking" spreadsheet.
+# Certifications live in certifications.yaml instead.
+# Rendered by the timeline shortcode (layouts/_shortcodes/timeline.html) in the order written here:
+# newest month first, and newest entry first within each month.
+# kind: pre-existing | purchase | sale | gift | swap | milestone
+# A swap moves a part between machines; use says which machines, specs the before → after.
+# amount: dollars, negative for money out, positive for money in; leave it off for swaps,
+# milestones, or when it isn't known yet.
+# note: a small italic line under the specs.
+
+- period: 2026-10
+  entries:
+    - kind: sale
+      title: Valve Steam Deck LCD
+      use: Mobile Gaming
+      note: Sold for $430, before fees
+      amount: 360
+
+- period: 2026-09
+  entries:
+    - kind: swap
+      title: Moved zz's 1 TB SSD into the Z2
+      use: Custom-built PC (zz) → HP Z2 G4 SFF
+      specs: ["zz: 1 TB → 2 TB SSD", "Z2: 256 GB → 1 TB SSD"]
+    - kind: purchase
+      title: 2 TB SSD for zz
+      use: GPU Node
+      note: eBay
+      amount: -140
+    - kind: purchase
+      title: Retroid Pocket Nova 4:3
+      use: Mobile Gaming
+      note: Android retro gaming handheld
+      amount: -240
+    - kind: milestone
+      title: ThinkPad T480 becomes the daily driver
+      use: Daily Driver
+      specs: [Intel i5-8350U, Intel UHD Graphics 620, 32 GB, 512 GB NVMe SSD]
+    - kind: sale
+      title: Apple MacBook Air M4 (2025)
+      use: Daily Driver
+      note: Sold for $1,100, before fees
+      amount: 920
+
+- period: 2026-03
+  entries:
+    - kind: sale
+      title: HP EliteDesk 800 G4 Mini
+      use: Spare
+      specs: [Intel i3-8100, Intel UHD Graphics 630]
+      amount: 35
+    - kind: swap
+      title: Moved the i7-8700T from the G4 into the Z2
+      use: HP EliteDesk 800 G4 Mini ↔ HP Z2 G4 SFF
+      specs: ["Z2: i3-8100 → i7-8700T", "G4: i7-8700T → i3-8100"]
+
+- period: 2026-02
+  entries:
+    - kind: purchase
+      title: Valve Steam Deck LCD
+      use: Mobile Gaming
+      specs: [AMD APU "Sephiroth", 16 GB, 256 GB SSD]
+      amount: -400
+    - kind: purchase
+      title: HP AMD Radeon RX 6400 4 GB Low Profile GPU
+      use: Components
+      amount: -140
+
+- period: 2026-01
+  entries:
+    - kind: purchase
+      title: HP EliteDesk 800 G4 Mini
+      use: Spare
+      specs: [Intel i7-8700T, Intel UHD Graphics 630]
+      note: The seller's replacement
+      amount: -50
+    - kind: gift
+      title: HP EliteDesk 800 G4 Mini
+      use: Spare
+      specs: [Intel i3-8100, Intel UHD Graphics 630]
+      note: Kept after replacement sent
+      amount: 0
+
+- period: 2025-11
+  entries:
+    - kind: sale
+      title: Assorted gear sale on eBay
+      amount: 1100
+    - kind: purchase
+      title: Bambu Lab P1S with AMS 2 Pro
+      use: Manufacturing
+      amount: -600
+
+- period: 2025-10
+  entries:
+    - kind: purchase
+      title: Netgear GS305 5-Port Gigabit Unmanaged Switch
+      use: Networking
+      amount: -20
+
+- period: 2025-08
+  entries:
+    - kind: purchase
+      title: Apple MacBook Air M4 (2025)
+      use: Daily Driver
+      specs: [Apple M4, 24 GB, 512 GB NVMe SSD]
+      amount: -1100
+
+- period: 2025-07
+  entries:
+    - kind: sale
+      title: Assorted moving sale on eBay
+      amount: 300
+
+- period: 2025-06
+  entries:
+    - kind: sale
+      title: Nintendo Switch Lite (Gray)
+      use: Mobile Gaming
+      amount: 120
+
+- period: 2025-05
+  entries:
+    - kind: swap
+      title: Moved zz's two 8 GB sticks into the Z2
+      use: Custom-built PC (zz) → HP Z2 G4 SFF
+      specs: ["Z2: 16 GB → 32 GB, all four slots filled"]
+    - kind: purchase
+      title: HP Z2 G4 SFF
+      use: Spare, NAS, Gaming
+      specs: [Intel i3-8100, Intel UHD Graphics 630, 16 GB, 256 GB SSD, 2 TB HDD]
+      amount: -140
+    - kind: purchase
+      title: Lenovo ThinkPad T480
+      use: Spare, Daily Driver
+      specs: [Intel i5-8350U, Intel UHD Graphics 620, 32 GB, 512 GB NVMe SSD]
+      amount: -300
+    - kind: purchase
+      title: HP EliteDesk 800 G2 Mini
+      use: Cluster Node, Homelab
+      specs: [Intel i5-6500T, Intel HD Graphics 530, 16 GB, 512 GB SSD]
+      amount: -70
+
+- period: 2025-04
+  entries:
+    - kind: sale
+      title: Valve Steam Deck OLED
+      use: Mobile Gaming
+      amount: 600
+
+- period: 2025-03
+  entries:
+    - kind: purchase
+      title: MikroTik CRS310-8G+2S+IN Smart Switch
+      use: Networking
+      specs: [98DX226S, 256 MB, 32 MB flash]
+      amount: -200
+
+- period: 2025-02
+  entries:
+    - kind: purchase
+      title: HP EliteDesk 800 G2 Mini (2×)
+      use: Cluster Node, Homelab
+      specs: [Intel i5-6500T, Intel HD Graphics 530, 16 GB, 256 GB SSD]
+      note: $70 each
+      amount: -140
+    - kind: pre-existing
+      title: Valve Steam Deck OLED
+      use: Mobile Gaming
+      specs: [AMD APU "Sephiroth", 16 GB, 1 TB NVMe SSD]
+      amount: -600
+    - kind: pre-existing
+      title: Lenovo ThinkPad X250
+      use: Spare
+      specs: [Intel i5-5300U, Intel HD Graphics 5500, 8 GB, 256 GB SSD]
+      amount: -150
+    - kind: pre-existing
+      title: Nintendo Switch Lite (Gray)
+      use: Mobile Gaming
+      specs: [NVIDIA Tegra, 4 GB, 32 GB NAND flash]
+      amount: -120
+    - kind: pre-existing
+      title: Custom-built PC
+      use: Gaming, Homelab
+      specs: [AMD Ryzen 5 5500, EVGA RTX 3060 12 GB, 32 GB, 1 TB SSD]
+      amount: -680
+
+- period: 2025-01
+  entries:
+    - kind: purchase
+      title: Corsair Vengeance DDR4 2 × 16 GB for zz
+      use: Custom-built PC (zz)
+      specs: ["zz: 16 GB → 32 GB", the two 8 GB sticks kept as spares]
+      note: Counted in the custom PC's cost

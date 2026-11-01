@@ -1,0 +1,30 @@
+{{- /* Kubestronaut progress: how many of the five certifications are passed, as a segmented bar,
+       then each one with when it was passed. Data: data/homelab/kubestronaut.yaml.
+       Usage: {{< kubestronaut >}} */ -}}
+{{- $k := hugo.Data.homelab.kubestronaut }}
+{{- $passed := slice }}
+{{- range $k.certs }}{{ if .passed }}{{ $passed = $passed | append .code }}{{ end }}{{ end }}
+<section class="kubestronaut" aria-label="Kubestronaut progress">
+  <div class="kubestronaut-head">
+    <p class="kubestronaut-title">Kubestronaut</p>
+    <p class="kubestronaut-count">{{ len $passed }} of {{ len $k.certs }} passed</p>
+  </div>
+  <div class="kubestronaut-bar" aria-hidden="true">
+    {{- /* Fills from the left: one segment per certification passed, whichever they are. */}}
+    {{- range $i, $_ := $k.certs }}<span{{ if lt $i (len $passed) }} class="is-passed"{{ end }}></span>{{ end }}
+  </div>
+  <ul class="kubestronaut-certs">
+    {{- range $k.certs }}
+      <li{{ if .passed }} class="is-passed"{{ end }}>
+        <span class="kubestronaut-code">{{ .code }}</span>
+        <span class="kubestronaut-name">{{ .name }}</span>
+        <span class="kubestronaut-status">
+          {{- with .passed }}Passed {{ time.Format "January 2006" (printf "%s-01" .) }}{{ else }}Not yet taken{{ end -}}
+        </span>
+      </li>
+    {{- end }}
+  </ul>
+  {{- with $k.expires }}
+    <p class="kubestronaut-note">Remaining exams are covered by the certification bundle, which expires {{ . }}.</p>
+  {{- end }}
+</section>

@@ -29,6 +29,13 @@ html.dark {
   /* Mini PC power lights */
   --color-status-power: #ffffff;
 
+  /* Timeline amounts: money in, money out */
+  --color-money-in: #4ade80;
+  --color-money-out: #fb923c;
+
+  /* Certification progress (Kubestronaut block) */
+  --color-progress: #60a5fa;
+
   /* Blog cards: dark navy panels with navy edges */
   --color-card-bg: #1a1e2b;
   --color-card-border: #2e354d;
@@ -64,6 +71,13 @@ html.dark {
   --color-status-3: #daae38;
   /* Mini PC power lights */
   --color-status-power: #ffffff;
+
+  /* Timeline amounts: money in, money out */
+  --color-money-in: #15803d;
+  --color-money-out: #c2410c;
+
+  /* Certification progress (Kubestronaut block) */
+  --color-progress: #1d4ed8;
 
   /* Blog cards: bright armor panels with a warm edge */
   --color-card-bg: #fffdfb;

@@ -1,0 +1,83 @@
+{{- /* ThinkPad T480 drawn like the rack elevation: front and side views of the open laptop, side by
+       side, with construction lines carried across both views. About 0.5 units per mm
+       (337 × 233 × 13 mm base; lid ~218 mm, tilted back 15°). Shares the landing graphic's drawing
+       styles in custom.css. Usage: {{< t480-elevation >}} */ -}}
+<figure class="landing-graphic rack-figure wide-figure" aria-hidden="true">
+  <svg viewBox="20 96 420 196" xmlns="http://www.w3.org/2000/svg">
+    {{- /* Construction lines: lid top, base top and base bottom run through both views. */}}
+    <g class="draft-construct">
+      <line x1="28" y1="115" x2="420" y2="115" />
+      <line x1="28" y1="220" x2="420" y2="220" />
+      <line x1="28" y1="226.5" x2="420" y2="226.5" />
+      <line x1="40" y1="104" x2="40" y2="252" />
+      <line x1="208" y1="104" x2="208" y2="252" />
+      <line x1="260" y1="104" x2="260" y2="252" />
+      <line x1="376" y1="104" x2="376" y2="252" />
+    </g>
+    <line class="draft-center" x1="124" y1="104" x2="124" y2="233" />
+
+    {{- /* Front view: the lid face-on, its bottom tucked behind the base. */}}
+    <g class="landing-unit">
+      <rect class="unit" x="40" y="115" width="168" height="108" rx="3" />
+      <rect class="port soft" x="47" y="122" width="154" height="86" rx="1" />
+      <circle class="port" cx="124" cy="118.5" r="1" />
+      {{- /* A faint line-drawn Fedora mark centred on the screen: the circle, and the "f" whose stem
+             loops back on itself in the lower left. */}}
+      <g class="screen-logo">
+        <circle cx="124" cy="165" r="14" />
+        <path d="M122 162 a5 5 0 0 1 5 -5 h2.5" />
+        <path d="M122 162 V171 a4 4 0 1 1 -4 -4 H128" />
+      </g>
+      <rect class="unit" x="40" y="220" width="168" height="6.5" rx="1.5" />
+      <path class="port soft" d="M114 220 q10 3 20 0" />
+      <rect class="port" x="52" y="226.5" width="12" height="1.2" />
+      <rect class="port" x="184" y="226.5" width="12" height="1.2" />
+    </g>
+
+    {{- /* Side view: front edge on the left, the lid hinged at the rear and leaning back. Ports sit
+           toward the rear, from front to back: headphone jack, USB-A, HDMI, USB-A, Ethernet, SD card,
+           then the Kensington lock by the hinge. */}}
+    <g class="landing-unit">
+      <polygon class="unit" points="372,220 400.2,114.7 403.1,115.5 374.9,220.8" />
+      <rect class="unit" x="260" y="220" width="116" height="6.5" rx="1.5" />
+      <circle class="port" cx="295" cy="223.25" r="1.1" />
+      <rect class="port" x="301" y="222.1" width="6" height="2.3" />
+      <rect class="port clip" x="302" y="222.9" width="4" height="0.7" />
+      <path class="port" d="M312 222.05 h7 v1.7 l-0.7 0.7 h-5.6 l-0.7 -0.7 z" />
+      <rect class="port" x="324" y="222.1" width="6" height="2.3" />
+      <rect class="port clip" x="325" y="222.9" width="4" height="0.7" />
+      <rect class="port" x="336" y="221" width="7" height="4.5" />
+      <rect class="port clip" x="338" y="223.7" width="3" height="1.8" />
+      <rect class="port" x="350" y="222.85" width="9" height="0.8" />
+      <rect class="port soft" x="362" y="222.35" width="3" height="1.8" rx="0.4" />
+      <rect class="port" x="340" y="226.5" width="12" height="1" />
+      <rect class="port" x="264" y="226.5" width="12" height="1" />
+    </g>
+
+    {{- /* Dimensions: width under the front view, depth under the side view, thickness beside it. */}}
+    <g class="draft-dim">
+      <line x1="34" y1="244" x2="214" y2="244" />
+      <line class="tick" x1="36" y1="248" x2="44" y2="240" />
+      <line class="tick" x1="204" y1="248" x2="212" y2="240" />
+      <text x="124" y="240" text-anchor="middle">337 mm</text>
+
+      <line x1="254" y1="244" x2="382" y2="244" />
+      <line class="tick" x1="256" y1="248" x2="264" y2="240" />
+      <line class="tick" x1="372" y1="248" x2="380" y2="240" />
+      <text x="318" y="240" text-anchor="middle">233 mm</text>
+
+      <line x1="392" y1="214" x2="392" y2="232.5" />
+      <line class="tick" x1="388" y1="224" x2="396" y2="216" />
+      <line class="tick" x1="388" y1="230.5" x2="396" y2="222.5" />
+      <text x="400" y="226">13 mm</text>
+
+      <text x="124" y="258" text-anchor="middle">Front</text>
+      <text x="318" y="258" text-anchor="middle">Side</text>
+    </g>
+
+    <g class="draft-title">
+      <line x1="40" y1="270" x2="420" y2="270" />
+      <text x="40" y="284">Elevations · ThinkPad T480</text>
+    </g>
+  </svg>
+</figure>

@@ -1,0 +1,66 @@
+{{- /* Vertical timeline of things bought, sold, gifted and achieved, grouped by month.
+       Usage: {{< timeline >}} reads data/homelab/timeline.yaml;
+       {{< timeline data="certifications" total="Total spent" left="milestone" >}} reads
+       data/homelab/certifications.yaml, labels the total line differently, and puts milestones
+       on the left of the spine on desktop (left takes a comma-separated list of kinds; default "sale").
+       Each entry's marker shape comes from its kind (see the Timeline section of custom.css).
+       A divider labelled with the year sits between the last month of one year and the next,
+       and a key above the timeline shows one sample marker for each kind the data uses. */ -}}
+{{- $name := .Get "data" | default "timeline" }}
+{{- $data := index hugo.Data.homelab $name }}
+{{- $totalLabel := .Get "total" | default "Net, including pre-existing gear" }}
+{{- $left := split (.Get "left" | default "sale") "," }}
+{{- $total := 0 }}
+{{- $year := "" }}
+{{- $kinds := slice }}
+{{- range $data }}{{ range .entries }}{{ $kinds = $kinds | append .kind }}{{ end }}{{ end }}
+<ul class="timeline-key" data-timeline="{{ $name }}" aria-label="Key">
+  {{- range slice
+        (dict "kind" "purchase" "flow" "out" "label" "Purchase")
+        (dict "kind" "sale" "flow" "in" "label" "Sale")
+        (dict "kind" "pre-existing" "flow" "out" "label" "Pre-existing")
+        (dict "kind" "gift" "flow" "" "label" "Gift")
+        (dict "kind" "swap" "flow" "" "label" "Swap")
+        (dict "kind" "milestone" "flow" "" "label" "Milestone") }}
+    {{- if in $kinds .kind }}
+    <li><span class="timeline-key-mark" data-kind="{{ .kind }}"{{ with .flow }} data-flow="{{ . }}"{{ end }}></span>{{ .label }}</li>
+    {{- end }}
+  {{- end }}
+</ul>
+<ol class="timeline" data-timeline="{{ $name }}">
+  {{- range $data }}
+    {{- /* A year divider wherever the year changes between one month and the next. */}}
+    {{- $thisYear := substr .period 0 4 }}
+    {{- if and $year (ne $thisYear $year) }}
+      <li class="timeline-year" aria-hidden="true"><span>{{ $thisYear }}</span></li>
+    {{- end }}
+    {{- $year = $thisYear }}
+    <li class="timeline-month">
+      <p class="timeline-date">{{ time.Format "January 2006" (printf "%s-01" .period) }}</p>
+      <ol>
+        {{- range .entries }}
+          {{- $flow := "" }}
+          {{- if isset . "amount" }}{{ if lt .amount 0 }}{{ $flow = " timeline-flow-out" }}{{ else if gt .amount 0 }}{{ $flow = " timeline-flow-in" }}{{ end }}{{ end }}
+          <li class="timeline-entry timeline-{{ .kind }}{{ $flow }}{{ if in $left .kind }} timeline-left{{ end }}">
+            <p class="timeline-kind">{{ .kind }}</p>
+            <p class="timeline-title">{{ .title }}</p>
+            {{- with .use }}<p class="timeline-use">{{ . }}</p>{{ end }}
+            {{- with .specs }}<p class="timeline-specs">{{ delimit . " · " }}</p>{{ end }}
+            {{- with .note }}<p class="timeline-note">{{ . }}</p>{{ end }}
+            {{- if isset . "amount" }}
+              {{- $total = add $total .amount }}
+              <p class="timeline-amount">
+                <span class="{{ if lt .amount 0 }}timeline-out{{ else if gt .amount 0 }}timeline-in{{ end }}">
+                  {{- if lt .amount 0 }}−{{ else if gt .amount 0 }}+{{ end }}${{ lang.FormatNumberCustom 0 (math.Abs .amount) -}}
+                </span>
+              </p>
+            {{- end }}
+          </li>
+        {{- end }}
+      </ol>
+    </li>
+  {{- end }}
+</ol>
+<p class="timeline-total">
+  {{ $totalLabel }}: {{ if lt $total 0 }}−{{ else }}+{{ end }}${{ lang.FormatNumberCustom 0 (math.Abs $total) }}
+</p>

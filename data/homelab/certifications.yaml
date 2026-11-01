@@ -1,0 +1,46 @@
+# Certification timeline: exams bought and passed, from the "daikon.devlab Hardware Tracking" spreadsheet.
+# Rendered by {{< timeline data="certifications" >}} on content/homelab/certifications.md.
+# Same format as timeline.yaml: newest month first, newest entry first within each month.
+# kind: purchase | milestone
+
+- period: 2026-02
+  entries:
+    - kind: milestone
+      title: KCNA Passed
+      use: Kubernetes and Cloud Native Associate
+
+- period: 2025-12
+  entries:
+    - kind: purchase
+      title: CKA + CKS + KCNA + KCSA Certification Bundle
+      use: Four exams, toward Kubestronaut
+      note: Expires March 2027
+      amount: -580
+
+- period: 2025-05
+  entries:
+    - kind: milestone
+      title: CKAD Passed
+      use: Certified Kubernetes Application Developer
+
+- period: 2025-04
+  entries:
+    - kind: purchase
+      title: CKAD Certification
+      use: Certified Kubernetes Application Developer
+      amount: -440
+
+- period: 2021-07
+  entries:
+    - kind: milestone
+      title: AWS Solutions Architect – Associate Passed
+      use: AWS Certified Solutions Architect – Associate
+      note: Expired July 2024
+
+- period: 2021-05
+  entries:
+    - kind: purchase
+      title: AWS Solutions Architect – Associate Exam
+      use: AWS Certified Solutions Architect – Associate
+      note: Month approximate
+      amount: -150

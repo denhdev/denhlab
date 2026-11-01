@@ -72,6 +72,10 @@ body:not(.landing) #content h1 {
   font-stretch: var(--type-heading-stretch);
 }
 
+/* Tables: a step smaller than Hextra's, with tighter cells, so wide spec tables fit the post column. */
+.content table { font-size: 0.8125rem; line-height: 1.35; }
+.content :is(th, td) { padding: 0.35rem 0.5rem; }
+
 /* Labels share the landing eyebrow's treatment: small, tracked-out capitals.
    Post date under the title (Hextra's blog/single.html meta line) and the "On this page" label. */
 #content > .hx\:mt-4.hx\:mb-16,
@@ -94,6 +98,375 @@ body:not(.landing) #content h1 {
   font-stretch: var(--type-heading-stretch);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* ---------- Timeline (homelab hardware timeline shortcode) ----------
+   A hairline runs down the left; months sit on it as labels, and each entry gets a marker
+   whose shape says what happened: filled dot bought, hollow dot sold, hollow square already owned,
+   dashed dot gifted, cross a part swapped between machines, diamond a milestone. */
+
+.content ol.timeline,
+.content ol.timeline ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content ol.timeline {
+  --tl-gutter: 1.75rem;
+  /* Hextra's page colour (not the palette's --color-bg), so hollow markers and the month
+     labels on the spine blend into the page. */
+  --tl-paper: var(--hx-color-white);
+  position: relative;
+  margin-block: 2.5rem;
+  padding-left: var(--tl-gutter);
+}
+
+html.dark .content ol.timeline { --tl-paper: var(--hx-color-dark); }
+
+.content ol.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: var(--color-guide);
+}
+
+.content ol.timeline li { margin: 0; padding: 0; }
+
+.content ol.timeline > li + li { margin-top: 2.75rem; }
+
+.timeline-date {
+  position: relative;
+  margin: 0 0 1rem;
+  font-family: var(--type-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--site-accent);
+}
+
+/* A short tick crossing the line at each month. */
+.timeline-date::before {
+  content: "";
+  position: absolute;
+  left: calc(0.3rem - var(--tl-gutter) - 0.35rem);
+  top: 50%;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--color-muted);
+}
+
+.timeline-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 1rem;
+}
+
+.content ol.timeline ol > li + li { margin-top: 1.5rem; }
+
+.timeline-entry > p { margin: 0; grid-column: 1; line-height: 1.45; }
+
+/* Marker: centred on the line, level with the entry's title. */
+.timeline-entry,
+.timeline-key-mark { --tl-mark: var(--color-fg); }
+
+/* Markers take the amount's colour: green for money in, orange for money out. */
+.timeline-entry.timeline-flow-in,
+.timeline-key-mark[data-flow="in"] { --tl-mark: var(--color-money-in); }
+.timeline-entry.timeline-flow-out,
+.timeline-key-mark[data-flow="out"] { --tl-mark: var(--color-money-out); }
+
+/* On the certifications timeline, passing an exam is marked in the Kubestronaut block's blue. */
+[data-timeline="certifications"] .timeline-milestone,
+[data-timeline="certifications"] .timeline-key-mark[data-kind="milestone"] { --tl-mark: var(--color-progress); }
+
+/* Marker shapes, shared by the entries on the spine and the samples in the key. */
+.timeline-entry::before,
+.timeline-key-mark {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid var(--tl-mark);
+  border-radius: 50%;
+  background: var(--tl-paper);
+}
+
+.timeline-entry::before {
+  position: absolute;
+  left: calc(0.3rem - var(--tl-gutter) - 0.25rem + 0.5px);
+  top: 1.5rem;
+}
+
+.timeline-purchase::before,
+.timeline-key-mark[data-kind="purchase"] { background: var(--tl-mark); }
+.timeline-pre-existing::before,
+.timeline-key-mark[data-kind="pre-existing"] { border-radius: 0; }
+.timeline-gift::before,
+.timeline-key-mark[data-kind="gift"] { border-style: dashed; }
+.timeline-swap::before,
+.timeline-key-mark[data-kind="swap"] {
+  border: 0;
+  border-radius: 0;
+  transform: rotate(45deg);
+  background:
+    linear-gradient(var(--tl-mark), var(--tl-mark)) center / 100% 1px no-repeat,
+    linear-gradient(var(--tl-mark), var(--tl-mark)) center / 1px 100% no-repeat,
+    var(--tl-paper);
+}
+.timeline-milestone::before,
+.timeline-key-mark[data-kind="milestone"] { border-radius: 0; transform: rotate(45deg); background: var(--tl-mark); }
+
+/* Key above the timeline: one sample marker per kind of event, in a wrapping row. */
+.content ul.timeline-key {
+  --tl-paper: var(--hx-color-white);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0.75rem 0;
+  list-style: none;
+  border-block: 1px solid var(--color-guide);
+  font-family: var(--type-label);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
+
+.content ul.timeline-key li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.timeline-key-mark { display: block; flex: none; }
+
+@media (min-width: 768px) {
+  .content ul.timeline-key { justify-content: center; }
+}
+
+.timeline-kind {
+  font-family: var(--type-label);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.timeline-title {
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.timeline-use { font-size: 0.9rem; color: var(--color-muted); }
+
+.timeline-specs { font-size: 0.8125rem; color: var(--color-muted); opacity: 0.85; }
+
+.content .timeline-entry > .timeline-amount {
+  grid-column: 2;
+  grid-row: 1 / span 5;
+  align-self: start;
+  margin-top: 1.2rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Money in (sales) and money out (purchases), from the palette. */
+.timeline-in { color: var(--color-money-in); }
+.timeline-out { color: var(--color-money-out); }
+
+/* Notes sit under the specs, in the entry's text column, so the amount column stays narrow. */
+.timeline-note {
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* Year divider: a hairline across the timeline with the year in the heading face on the spine. */
+.content ol.timeline > li.timeline-year {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3.25rem;
+  margin-left: calc(-1 * var(--tl-gutter));
+}
+
+.timeline-year::before,
+.timeline-year::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-guide);
+}
+
+.timeline-year::before { flex: 0 0 0.75rem; }
+
+.timeline-year span {
+  padding: 0 0.25rem;
+  background: var(--tl-paper);
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.content ol.timeline > li.timeline-year + li { margin-top: 3.25rem; }
+
+.timeline-total {
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-guide);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Desktop: the spine moves to the centre. Sales (or whichever kinds the shortcode's left= names)
+   sit on the left, everything else on the right,
+   both pushed toward the spine; month labels sit on the spine itself. Every event gets its own
+   row, so the page still reads strictly in order from top to bottom. */
+@media (min-width: 768px) {
+  .content ol.timeline { --tl-gap: 3.5rem; padding-left: 0; }
+  .content ol.timeline::before { left: 50%; }
+
+  .timeline-date {
+    width: fit-content;
+    margin: 0 auto 1.25rem;
+    padding: 0.2rem 0.75rem;
+    background: var(--tl-paper);
+  }
+  .timeline-date::before { display: none; }
+
+  .content ol.timeline .timeline-month > ol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .content ol.timeline ol > li + li { margin-top: 0; }
+
+  .timeline-entry { width: calc(50% - var(--tl-gap) / 2); align-self: flex-end; }
+  .timeline-entry::before { left: calc(var(--tl-gap) / -2 - 0.25rem + 0.5px); }
+
+  .timeline-left {
+    align-self: flex-start;
+    grid-template-columns: auto 1fr;
+    text-align: right;
+  }
+  .timeline-left::before { left: auto; right: calc(var(--tl-gap) / -2 - 0.25rem - 0.5px); }
+  .content .timeline-left > p { grid-column: 2; }
+  .content .timeline-left > .timeline-amount { grid-column: 1; text-align: left; }
+
+  .content ol.timeline > li.timeline-year { margin-left: 0; }
+  .timeline-year::before { flex: 1; }
+
+  .timeline-total { text-align: center; }
+}
+
+/* ---------- Kubestronaut progress (certifications page shortcode) ----------
+   A bordered block: title and count, a bar of five segments (filled when passed), then each
+   certification with its status. */
+
+.kubestronaut {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-card-border);
+  border-radius: 0.75rem;
+  background: var(--color-card-bg);
+}
+
+.content .kubestronaut p { margin: 0; }
+
+.kubestronaut-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kubestronaut-title {
+  font-family: var(--type-heading);
+  font-weight: var(--type-heading-weight);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.kubestronaut-count,
+.kubestronaut-code {
+  font-family: var(--type-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.kubestronaut-bar {
+  display: flex;
+  gap: 4px;
+  margin: 0.75rem 0 1rem;
+}
+
+.kubestronaut-bar span {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-guide);
+}
+
+.kubestronaut-bar .is-passed { background: var(--color-progress); }
+
+.content ul.kubestronaut-certs {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content ul.kubestronaut-certs li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.kubestronaut-name { color: var(--color-muted); }
+
+.kubestronaut-status {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.kubestronaut-certs .is-passed .kubestronaut-status { color: var(--color-progress); }
+
+.kubestronaut-note {
+  margin-top: 1rem !important;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-guide);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+/* Phones: the status drops under the name. */
+@media (max-width: 639px) {
+  .content ul.kubestronaut-certs li { grid-template-columns: 3.5rem 1fr; row-gap: 0; }
+  .kubestronaut-status { grid-column: 2; }
 }
 
 /* ---------- Landing page ---------- */
@@ -372,6 +745,41 @@ body:not(.landing) #content h1 {
 .landing-cta:focus-visible {
   outline: 2px solid var(--landing-accent);
   outline-offset: 4px;
+}
+
+/* ---------- Rack elevation on the hardware page ----------
+   The landing graphic's drawing styles read --landing-* colours, which only the landing page
+   sets; give the copy the same names, with unit faces in Hextra's page colour. */
+
+.rack-figure {
+  --landing-bg: var(--hx-color-white);
+  --landing-muted: var(--color-muted);
+  --landing-guide: var(--color-guide);
+  margin: 2rem auto;
+}
+
+html.dark .rack-figure { --landing-bg: var(--hx-color-dark); }
+
+/* Two-view drawings (laptop, GPU case) are wider than the rack (about 400-wide viewBoxes to the
+   rack's 320), so they get more room; on desktop their strokes are thinned so lines come out the
+   same weight as the rack's. */
+.landing-graphic.wide-figure { width: min(100%, 40rem); }
+
+@media (min-width: 768px) {
+  .landing-graphic.wide-figure { --draft-stroke: 0.75; }
+}
+
+/* GPU case: perforated mesh as faint dots. */
+.mesh-dot { fill: var(--landing-muted); opacity: 0.45; }
+.landing-unit .mesh { fill: url(#core-mesh); }
+
+/* The logo on the laptop's screen: a faint line drawing, just there to say what the machine runs. */
+.screen-logo {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: calc(1.25px * var(--draft-stroke));
+  stroke-linecap: round;
+  opacity: 0.2;
 }
 
 /* ---------- Blog cards ---------- */

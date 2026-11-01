@@ -25,7 +25,7 @@ title = 'denhlab'
       link = '/blog/'
 
   [params.blog.list]
-    displayTags = true
+    displayTags = false
     sortBy = 'date'
     sortOrder = 'desc'
     pagerSize = 12

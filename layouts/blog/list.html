@@ -21,7 +21,9 @@
                 <img class="blog-card-image" src="{{ . | relURL }}" alt="" loading="lazy" />
               {{- end }}
               <div class="blog-card-body">
-                <p class="blog-card-date">{{ partial "utils/format-date" .Date }}</p>
+                {{- if not .Params.hideDate }}
+                  <p class="blog-card-date">{{ partial "utils/format-date" .Date }}</p>
+                {{- end }}
                 <h2 class="blog-card-title">{{ .Title }}</h2>
                 <p class="blog-card-summary">{{- partial "utils/page-description" . -}}</p>
                 {{- if and site.Params.blog.list.displayTags .Params.tags }}

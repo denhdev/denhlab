@@ -6,14 +6,6 @@ tags = ['homelab', 'hardware']
 summary = 'The machines in the lab: what each one runs, what it cost, and where it came from.'
 +++
 
-## Daily Driver
-
-{{< t480-elevation >}}
-
-| Name            |Role              | OS              | Device                           | Processor        | RAM        | Storage              | Cost                 |
-|-----------------|------------------|-----------------|----------------------------------|------------------|------------|----------------------|----------------------|
-|newtype-1        | Daily Driver     | Fedora Workstation | **Lenovo ThinkPad T480**         | Intel i5-8350U   | 32 GB      | 512 GB NVMe SSD      | $300 · eBay          |
-
 ## Cluster
 
 {{< rack-elevation >}}
@@ -41,6 +33,14 @@ summary = 'The machines in the lab: what each one runs, what it cost, and where 
 | Case        | Thermaltake Core V1                   | $50   |
 | OS          | Ubuntu Server 24.04                   | $0    |
 | Total       |                                       | $825  |
+
+## Daily Driver
+
+{{< t480-elevation >}}
+
+| Name            |Role              | OS              | Device                           | Processor        | RAM        | Storage              | Cost                 |
+|-----------------|------------------|-----------------|----------------------------------|------------------|------------|----------------------|----------------------|
+|newtype-1        | Daily Driver     | Fedora Workstation | **Lenovo ThinkPad T480**         | Intel i5-8350U   | 32 GB      | 512 GB NVMe SSD      | $300 · eBay          |
 
 ## Inactive
 

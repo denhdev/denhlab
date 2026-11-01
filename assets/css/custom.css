@@ -167,33 +167,101 @@ body:not(.landing) #content h1 {
 
 @media (min-width: 768px) {
   .landing-main {
-    grid-template-columns: 1fr 1.1fr;
+    /* Graphic on the left (it comes first in the markup), copy on the right. */
+    grid-template-columns: 1.1fr 1fr;
     justify-items: start;
     gap: 4rem;
     padding: 4rem 3rem;
   }
-  .landing-graphic { order: 2; justify-self: center; }
+  .landing-graphic { justify-self: center; }
 }
 
 .landing-graphic {
   width: min(70vw, 22rem);
   color: var(--color-graphic);
+  /* Strokes are multiplied by this, so lines keep their weight on screen when the drawing scales. */
+  --draft-stroke: 1;
+}
+
+/* Half again as large on desktop, with strokes thinned by the same factor. */
+@media (min-width: 768px) {
+  .landing-graphic {
+    width: min(100%, 33rem);
+    --draft-stroke: calc(1 / 1.5);
+  }
 }
 
 .landing-graphic svg { width: 100%; height: auto; display: block; }
 
-.landing-unit rect {
+/* Drafting line weights, heaviest to lightest: object outlines, dimensions, construction. */
+.landing-unit .unit {
   fill: var(--landing-bg);
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: calc(1.5px * var(--draft-stroke));
 }
 
-.landing-unit line {
-  stroke: var(--landing-muted);
-  stroke-width: 2;
-  stroke-dasharray: 4 6;
-  stroke-linecap: round;
+/* Vent grille, hatched like a cut surface. */
+.landing-unit .vent {
+  fill: url(#landing-hatch);
+  stroke: currentColor;
+  stroke-width: calc(0.75px * var(--draft-stroke));
 }
+
+/* Switch ports and jacks: fine outlines, like the vents. The clip inside each port is finer still. */
+.landing-unit .port {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: calc(0.6px * var(--draft-stroke));
+}
+
+.landing-unit .port.clip { stroke-width: calc(0.3px * var(--draft-stroke)); }
+
+/* Rounded shapes on the mini PCs (front panel, USB-C, power button) sit back a step. */
+.landing-unit .port.soft { stroke-width: calc(0.4px * var(--draft-stroke)); }
+
+/* Mini PC grille slots, as fine as the hatching. */
+.landing-unit .slots line {
+  stroke: var(--landing-muted);
+  stroke-width: calc(0.35px * var(--draft-stroke));
+}
+
+.draft-hatch {
+  stroke: var(--landing-muted);
+  stroke-width: calc(0.6px * var(--draft-stroke));
+}
+
+.draft-construct line {
+  stroke: var(--landing-guide);
+  stroke-width: calc(0.5px * var(--draft-stroke));
+}
+
+.draft-center {
+  stroke: var(--landing-muted);
+  stroke-width: calc(0.5px * var(--draft-stroke));
+  stroke-dasharray: 14 3 2 3;
+  opacity: 0.7;
+}
+
+.draft-dim line,
+.draft-dim .bubble {
+  fill: none;
+  stroke: var(--landing-muted);
+  stroke-width: calc(0.6px * var(--draft-stroke));
+}
+
+.draft-dim .tick { stroke: currentColor; stroke-width: calc(0.75px * var(--draft-stroke)); }
+
+.draft-dim text,
+.draft-title text {
+  font-family: var(--type-label);
+  font-size: 7.5px;
+  letter-spacing: 0.08em;
+  fill: var(--landing-muted);
+}
+
+.draft-title line { stroke: currentColor; stroke-width: calc(1px * var(--draft-stroke)); }
+
+.draft-title text { text-transform: uppercase; letter-spacing: 0.18em; }
 
 .landing-led {
   fill: currentColor;
@@ -206,6 +274,12 @@ body:not(.landing) #content h1 {
 .landing-led.led-blue { fill: var(--color-status-1); }
 .landing-led.led-red { fill: var(--color-status-2); animation-delay: calc(var(--i) * 0.35s + 0.8s); }
 .landing-led.led-yellow { fill: var(--color-status-3); animation-delay: calc(var(--i) * 0.35s + 1.6s); }
+/* Mini PC power lights are white, so a hairline outline keeps them visible on a light page. */
+.landing-led.led-power {
+  fill: var(--color-status-power);
+  stroke: currentColor;
+  stroke-width: calc(0.4px * var(--draft-stroke));
+}
 
 @keyframes landing-blink {
   0%, 70%, 100% { opacity: 1; }

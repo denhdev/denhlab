@@ -13,7 +13,7 @@ html.dark {
   /* Labels, the landing eyebrow and button, hover states */
   --site-accent: #fafaf9;
 
-  /* Landing graphic: its outlines and the glow behind it */
+  /* Landing graphic: its outlines */
   --color-graphic: #fafaf9;
 
   /* Landing margin guides and crop marks */
@@ -24,6 +24,8 @@ html.dark {
   --color-status-1: #2563eb;
   --color-status-2: #dc2626;
   --color-status-3: #eab308;
+  /* Mini PC power lights */
+  --color-status-power: #ffffff;
 
   /* Blog cards */
   --color-card-bg: rgb(255 255 255 / 0.03);
@@ -52,6 +54,8 @@ html.dark {
   --color-status-1: #2563eb;
   --color-status-2: #dc2626;
   --color-status-3: #eab308;
+  /* Mini PC power lights */
+  --color-status-power: #ffffff;
 
   --color-card-bg: #fff;
   --color-card-border: #d6d3d1;

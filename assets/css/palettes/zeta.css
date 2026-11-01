@@ -26,6 +26,8 @@ html.dark {
   --color-status-1: #6f86c9;
   --color-status-2: #d13a40;
   --color-status-3: #dcb85d;
+  /* Mini PC power lights */
+  --color-status-power: #ffffff;
 
   /* Blog cards: dark navy panels with navy edges */
   --color-card-bg: #1a1e2b;
@@ -60,6 +62,8 @@ html.dark {
   --color-status-1: #3d5a99;
   --color-status-2: #bb3a2c;
   --color-status-3: #daae38;
+  /* Mini PC power lights */
+  --color-status-power: #ffffff;
 
   /* Blog cards: bright armor panels with a warm edge */
   --color-card-bg: #fffdfb;

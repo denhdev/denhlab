@@ -109,6 +109,20 @@
             </g>
           {{- end }}
 
+          {{- /* Patch cables: the switch's top row of ports up to the middle four on the patch panel,
+                 drawn over the units as gentle S-curves from port to port. */}}
+          {{- $sy := index $units (sub $n 1) }}
+          {{- $py := index $units (sub $n 2) }}
+          <g class="draft-cable" fill="none" stroke="currentColor">
+            {{- range $c := seq 0 3 }}
+              {{- $x1 := add 116.5 (mul $c 15) }}
+              {{- $y1 := add $sy 14 }}
+              {{- $x2 := add 134.5 (mul $c 17) }}
+              {{- $y2 := add $py 24 }}
+              <path d="M{{ $x1 }} {{ $y1 }} C{{ $x1 }} {{ sub $y1 16 }} {{ $x2 }} {{ add $y2 16 }} {{ $x2 }} {{ $y2 }}" />
+            {{- end }}
+          </g>
+
           {{- /* Title strip. */}}
           <g class="draft-title">
             <line x1="70" y1="{{ add $bottom 34 }}" x2="250" y2="{{ add $bottom 34 }}" />

@@ -225,6 +225,14 @@ body:not(.landing) #content h1 {
   stroke-width: calc(0.35px * var(--draft-stroke));
 }
 
+/* Patch cables between the switch and the patch panel. */
+.draft-cable path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: calc(0.75px * var(--draft-stroke));
+  stroke-linecap: round;
+}
+
 .draft-hatch {
   stroke: var(--landing-muted);
   stroke-width: calc(0.6px * var(--draft-stroke));

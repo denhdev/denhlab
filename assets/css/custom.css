@@ -76,6 +76,37 @@ body:not(.landing) #content h1 {
 .content table { font-size: 0.8125rem; line-height: 1.35; }
 .content :is(th, td) { padding: 0.35rem 0.5rem; }
 
+/* Wide tables on narrow screens (table-stack, from layouts/_markup/render-table.html): each row becomes
+   its own bordered block, the first cell as its heading and every other cell as a label/value line,
+   with the label taken from the column header. Nothing scrolls sideways. */
+@media (max-width: 47.999rem) {
+  .content table.table-stack { overflow: visible; border: 0; }
+  .content table.table-stack thead { display: none; }
+  .content table.table-stack :is(tbody, tr, td) { display: block; }
+  .content table.table-stack tr {
+    border: 1px solid var(--color-guide);
+    margin-bottom: 0.75rem;
+  }
+  .content table.table-stack td {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    border: 0;
+    border-top: 1px solid var(--color-guide);
+  }
+  .content table.table-stack td::before {
+    content: attr(data-label);
+    color: var(--color-muted);
+  }
+  .content table.table-stack td:first-child {
+    display: block;
+    border-top: 0;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--color-guide) 40%, transparent);
+  }
+  .content table.table-stack td:first-child::before { content: none; }
+}
+
 /* Labels share the landing eyebrow's treatment: small, tracked-out capitals.
    Post date under the title (Hextra's blog/single.html meta line) and the "On this page" label. */
 #content > .hx\:mt-4.hx\:mb-16,
@@ -815,6 +846,8 @@ html.dark .rack-figure { --landing-bg: var(--hx-color-dark); }
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+.blog-card-svg svg { display: block; width: 100%; height: 100%; }
 
 .blog-card-body {
   display: flex;

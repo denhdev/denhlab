@@ -2,6 +2,7 @@
 date = '2026-11-01T09:00:00-07:00'
 draft = false
 title = 'Current Hardware'
+weight = 2
 tags = ['homelab', 'hardware']
 summary = 'The machines in the lab: what each one runs, what it cost, and where it came from.'
 +++
@@ -46,5 +47,5 @@ summary = 'The machines in the lab: what each one runs, what it cost, and where 
 
 | Name            |Role              | OS              | Device                           | Processor        | RAM        | Storage              | Cost                 |
 |-----------------|------------------|-----------------|----------------------------------|------------------|------------|----------------------|----------------------|
-|anaheim          | Spare            | TrueNAS Scale   | **HP Z2 Gen 4 SFF**              | Intel i7-8700T   | 32 GB      | 1 TB SSD, 2 TB HDD   | $160 · Facebook      |
-|zakuii           | Spare            | Arch            | **Lenovo ThinkPad X250**         | Intel i5-5300U   | 8 GB       | 256 GB SSD           | $80 · Craigslist     |
+|anaheim          | Spare            | TrueNAS Scale   | **HP Z2 Gen 4 SFF**              | Intel i7-8700T   | 32 GB      | 1 TB SSD, 2 TB HDD   | $140 · Facebook      |
+|zakuii           | Spare            | Arch            | **Lenovo ThinkPad X250**         | Intel i5-5300U   | 8 GB       | 256 GB SSD           | $150 · Craigslist    |

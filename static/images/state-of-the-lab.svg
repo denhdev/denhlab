@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Card cover for "State of the Homelab": the rack's front elevation beside the GPU node's side
+       elevation, in the site's drafting style but simplified for a small card: heavy lines, few
+       details, hatching instead of mesh, no text. Colours come from the site palette when the card template inlines this file (so it follows
+       light and dark mode); the fallbacks in each var() are the light theme, for viewing on its own. -->
+  <style>
+    .cover-paper { fill: var(--color-bg, #fafaf9); }
+    .cover-ink { fill: none; stroke: var(--color-fg, #1c1917); stroke-linejoin: round; }
+    .cover-ink .cover-face { fill: var(--color-bg, #fafaf9); }
+    .cover-muted { stroke: var(--color-muted, #a8a29e); opacity: 0.6; }
+    .cover-guide { stroke: var(--color-guide, #e2dfdc); }
+    .cover-led-white { fill: var(--color-status-power, #ffffff); }
+    .cover-led-blue { fill: var(--color-status-1, #2563eb); stroke: none; }
+    .cover-ink .cover-grille { fill: url(#cover-hatch); }
+  </style>
+  <defs>
+    <pattern id="cover-hatch" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line class="cover-muted" x1="0" y1="0" x2="0" y2="22" stroke-width="1.75" />
+    </pattern>
+  </defs>
+
+  <rect class="cover-paper" width="1600" height="900" />
+
+  <!-- Construction lines -->
+  <g class="cover-guide" stroke-width="1.5">
+    <line x1="80" y1="760" x2="1520" y2="760" />
+    <line x1="80" y1="122" x2="730" y2="122" />
+    <line x1="770" y1="200" x2="1520" y2="200" />
+    <line x1="150" y1="70" x2="150" y2="810" />
+    <line x1="670" y1="70" x2="670" y2="810" />
+    <line x1="830" y1="150" x2="830" y2="810" />
+    <line x1="1450" y1="150" x2="1450" y2="810" />
+  </g>
+
+  <g class="cover-ink">
+    <!-- Rack, units 5 to 3: mini PCs -->
+    <g id="cover-mini">
+      <rect x="150" y="122" width="520" height="110" class="cover-face" stroke-width="4.5" />
+      <rect x="175" y="138" width="420" height="78" rx="10" stroke-width="2.25" />
+      <g class="cover-muted" stroke-width="1.75">
+        <line x1="195" y1="152" x2="195" y2="202" /><line x1="210" y1="152" x2="210" y2="202" />
+        <line x1="225" y1="152" x2="225" y2="202" /><line x1="240" y1="152" x2="240" y2="202" />
+        <line x1="255" y1="152" x2="255" y2="202" />
+      </g>
+      <rect x="470" y="174" width="34" height="16" stroke-width="2.25" />
+      <rect x="515" y="174" width="34" height="16" stroke-width="2.25" />
+      <rect x="612" y="140" width="36" height="74" rx="8" stroke-width="2.25" />
+      <circle cx="630" cy="198" r="8" class="cover-led-white" stroke-width="1.75" />
+    </g>
+    <use href="#cover-mini" y="132" />
+    <use href="#cover-mini" y="264" />
+
+    <!-- Unit 2: patch panel -->
+    <rect x="150" y="518" width="520" height="110" class="cover-face" stroke-width="4.5" />
+    <g stroke-width="2.25">
+      <rect x="201" y="557" width="40" height="32" /><rect x="255" y="557" width="40" height="32" />
+      <rect x="309" y="557" width="40" height="32" /><rect x="363" y="557" width="40" height="32" />
+      <rect x="417" y="557" width="40" height="32" /><rect x="471" y="557" width="40" height="32" />
+      <rect x="525" y="557" width="40" height="32" /><rect x="579" y="557" width="40" height="32" />
+    </g>
+
+    <!-- Unit 1: switch -->
+    <rect x="150" y="650" width="520" height="110" class="cover-face" stroke-width="4.5" />
+    <g stroke-width="2.25">
+      <rect x="320" y="678" width="34" height="26" /><rect x="360" y="678" width="34" height="26" />
+      <rect x="400" y="678" width="34" height="26" /><rect x="440" y="678" width="34" height="26" />
+      <rect x="320" y="708" width="34" height="26" /><rect x="360" y="708" width="34" height="26" />
+      <rect x="400" y="708" width="34" height="26" /><rect x="440" y="708" width="34" height="26" />
+      <rect x="520" y="706" width="54" height="26" /><rect x="584" y="706" width="54" height="26" />
+    </g>
+    <circle class="cover-led-blue" cx="270" cy="726" r="9" />
+
+    <!-- Patch cables: switch top row up to the panel's middle four -->
+    <g stroke-width="2.25" stroke-linecap="round">
+      <path d="M337 678 C337 640 329 627 329 589" />
+      <path d="M377 678 C377 640 383 627 383 589" />
+      <path d="M417 678 C417 640 437 627 437 589" />
+      <path d="M457 678 C457 640 491 627 491 589" />
+    </g>
+
+    <!-- GPU node, side elevation: front panel and I/O strip on the right, grille over the top half -->
+    <rect x="830" y="200" width="620" height="560" rx="26" class="cover-face" stroke-width="4.5" />
+    <rect class="cover-grille" x="870" y="236" width="470" height="230" rx="12" stroke-width="2.25" />
+    <g class="cover-muted" stroke-width="2.25">
+      <line x1="1420" y1="218" x2="1420" y2="742" />
+      <line x1="1378" y1="218" x2="1378" y2="742" />
+    </g>
+    <circle cx="1391" cy="640" r="7" class="cover-led-white" stroke-width="1.75" />
+    <circle cx="1407" cy="640" r="7" class="cover-led-white" stroke-width="1.75" />
+    <circle cx="1399" cy="672" r="14" stroke-width="2.25" />
+    <rect x="1386" y="700" width="10" height="26" stroke-width="1.75" />
+    <rect x="1402" y="700" width="10" height="26" stroke-width="1.75" />
+    <rect x="850" y="760" width="60" height="12" stroke-width="2.25" />
+    <rect x="1370" y="760" width="60" height="12" stroke-width="2.25" />
+  </g>
+</svg>

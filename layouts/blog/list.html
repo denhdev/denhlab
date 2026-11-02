@@ -11,14 +11,24 @@
           {{ .Content }}
           {{ partial "custom/content-end.html" . }}
         </div>
-        {{- $pages := partial "utils/sort-pages" (dict "page" . "by" site.Params.blog.list.sortBy "order" site.Params.blog.list.sortOrder) -}}
+        {{- /* A section can set its own card order with params sortBy / sortOrder (homelab uses weight). */ -}}
+        {{- $by := .Params.sortBy | default site.Params.blog.list.sortBy -}}
+        {{- $order := .Params.sortOrder | default site.Params.blog.list.sortOrder -}}
+        {{- $pages := partial "utils/sort-pages" (dict "page" . "by" $by "order" $order) -}}
         {{- $pagerSize := site.Params.blog.list.pagerSize | default 10 -}}
         {{- $paginator := .Paginate $pages $pagerSize -}}
         <div class="blog-cards">
           {{- range $paginator.Pages }}
             <a class="blog-card" href="{{ .RelPermalink }}">
               {{- with .Params.image }}
-                <img class="blog-card-image" src="{{ . | relURL }}" alt="" loading="lazy" />
+                {{- /* SVG covers from static/ are inlined so they can use the site palette and follow
+                       light and dark mode; anything else (photos) stays an <img>. */ -}}
+                {{- $file := path.Join "static" . }}
+                {{- if and (strings.HasSuffix . ".svg") (fileExists $file) }}
+                  <div class="blog-card-image blog-card-svg" aria-hidden="true">{{ readFile $file | safeHTML }}</div>
+                {{- else }}
+                  <img class="blog-card-image" src="{{ . | relURL }}" alt="" loading="lazy" />
+                {{- end }}
               {{- end }}
               <div class="blog-card-body">
                 {{- if not .Params.hideDate }}

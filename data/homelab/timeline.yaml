@@ -61,10 +61,16 @@
       use: Mobile Gaming
       specs: [AMD APU "Sephiroth", 16 GB, 256 GB SSD]
       amount: -400
+    - kind: swap
+      title: Fitted the RX 6400 into the Z2
+      use: HP Z2 G4 SFF
+      specs: ["Z2: Intel UHD Graphics 630 → Radeon RX 6400"]
+      note: To make the Z2 the gaming PC and free up zz for local AI
     - kind: purchase
       title: HP AMD Radeon RX 6400 4 GB Low Profile GPU
-      use: Components
-      amount: -140
+      use: Gaming GPU for the Z2
+      note: eBay
+      amount: -150
 
 - period: 2026-01
   entries:

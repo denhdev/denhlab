@@ -147,6 +147,19 @@
         </div>
       </div>
     </main>
+    {{- /* Now playing ticker along the bottom guide (left gutter on mobile). The run is written
+           eight times, so half the track is wider than even a large screen and the scroll by half
+           loops seamlessly; the copies are hidden from screen readers. */}}
+    {{- with .Params.nowPlaying }}
+      {{- $run := partial "landing/now-playing-run.html" . }}
+      <div class="landing-marquee">
+        <div class="landing-marquee-track">
+          {{- range $i, $_ := seq 8 }}
+            <p class="landing-marquee-run"{{ if $i }} aria-hidden="true"{{ end }}>{{ $run }}</p>
+          {{- end }}
+        </div>
+      </div>
+    {{- end }}
     {{ partial "scripts.html" . }}
   </body>
 </html>

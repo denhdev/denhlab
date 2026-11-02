@@ -512,6 +512,9 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
   --landing-accent: var(--site-accent);
   --landing-guide: var(--color-guide);
   --landing-crop: var(--color-crop);
+  /* Sheet margin: distance from the screen edge to each guide line. Shared by the guides and
+     the now-playing marquee that runs along them. */
+  --m: clamp(12px, 3.5vw, 40px);
   background: var(--landing-bg);
   color: var(--landing-fg);
 }
@@ -522,7 +525,6 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
    with the screen and stays clear of the text, which is padded further in. */
 
 .landing-guides {
-  --m: clamp(12px, 3.5vw, 40px);       /* margin: distance from screen edge to each guide */
   --mark: calc(var(--m) * 0.75);       /* crop mark length, from the screen edge inward */
   --mark-gap: 0px;                     /* space between screen edge and crop mark */
   --mark-w: 1.5px;                     /* crop mark weight */
@@ -702,6 +704,67 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
 
 @media (prefers-reduced-motion: reduce) {
   .landing-led { animation: none; }
+}
+
+/* ---------- Now playing marquee ----------
+   A ticker sitting just inside the bottom guide, between the left and right guides. The track
+   holds the text eight times and slides by half its length, so the loop is seamless at any
+   screen width; the duration is per half, about 45s for each pass of the text. On mobile it turns
+   vertical and runs down the left gutter, just right of the left guide. */
+
+.landing-marquee {
+  position: fixed;
+  left: var(--m);
+  right: var(--m);
+  bottom: calc(var(--m) + 0.5rem);
+  z-index: 1;
+  overflow: hidden;
+  font-family: var(--type-label);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* Muted gray pulled halfway to the page colour, so the ticker recedes behind the content. */
+  color: color-mix(in srgb, var(--landing-muted) 55%, var(--landing-bg));
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+}
+
+.landing-marquee-track {
+  /* Logical sizes, so the same rules hold when the marquee turns vertical on mobile. */
+  display: flex;
+  inline-size: max-content;
+  animation: landing-marquee-x 180s linear infinite;
+}
+
+.landing-marquee:hover .landing-marquee-track { animation-play-state: paused; }
+
+.landing-marquee-run { margin: 0; padding-inline-end: 4rem; }
+.landing-marquee-run > span + span::before { content: "·"; margin-inline: 1.25em; }
+.landing-marquee-label { color: var(--landing-muted); }
+
+@keyframes landing-marquee-x { to { transform: translateX(-50%); } }
+@keyframes landing-marquee-y { to { transform: translateY(-50%); } }
+
+@media (max-width: 767.98px) {
+  .landing-marquee {
+    left: calc(var(--m) + 4px);
+    right: auto;
+    top: var(--m);
+    bottom: var(--m);
+    writing-mode: vertical-rl;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+            mask-image: linear-gradient(to bottom, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  }
+  .landing-marquee-track { animation-name: landing-marquee-y; }
+  /* Room for the marquee in the left gutter; matched on the right so the content stays centred. */
+  .landing-main { padding-inline: calc(var(--m) + 1.75rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-marquee-track { animation: none; }
 }
 
 .landing-copy { max-width: 34rem; text-align: center; }

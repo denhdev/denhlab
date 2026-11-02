@@ -9,17 +9,11 @@ summary = 'A low-spec, homelab that can still run production-style Kubernetes an
 
 This is the first real post on the site, so it's a status report: what's in the lab, what it's for, what it isn't doing yet, and where I am on the road to Kubestronaut.
 
-TLDR: It's a small rack of mini PCs that cost less than the hobbiy gear I sold to pay for it, and  it still runs the same patterns I teach for production.
+TLDR: It's a small rack of mini PCs that cost less than the hobby gear I sold to pay for it, and it still runs the same patterns I teach for production.
 
 ## Kubernetes at home
 
-In 2019, I was a designer and architect teaching state of the art fabrication with 3D printing, CNC and laser cutting at the Academy of Art University in San Francisco. I loved the work, but I wanted to move into software, and as soon as I began developing in 2020, the world locked down.
-
-- In 2021 I was hired to train engineers in cloud-native deployments on Kubernetes at a major telecom company.
-
-- In 2022 I developed and taught CI/CD enabled deployments on GitLab with Terraform targeting AWS teams at a Fortune 50 insurance company.
-
-- In 2024 I began training teams targeting deployments on ROSA (Red Hat OpenShift Service on AWS) with Argo CD and ESO on AWS Secret Manager.
+I'm an architect turned technical instructor. Since 2021 I've taught engineers to deploy on Kubernetes, AWS and OpenShift (the longer story is on the [About]({{< relref "/about" >}}) page).
 
 Somewhere along the way I fell for distributed computing. It scratches the same itch architecture and industrial design did: systems made of standard parts, fitted together under constraints with real human users. The difference is the feedback loop. A building takes years to come to fruition while a cluster tells you within seconds whether you got it right. Plus, it's quite addicting to see pipelines go green.
 

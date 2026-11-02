@@ -1,0 +1,8 @@
+{{- /* Circular portrait, centred: {{< avatar src="/images/avatar.jpg" alt="…" >}}. src is a path under
+       static/; nothing renders (with a build warning) until the file is there. */ -}}
+{{- $src := .Get "src" | default "/images/avatar.jpg" }}
+{{- if fileExists (path.Join "static" $src) }}
+  <img class="avatar" src="{{ $src | relURL }}" alt="{{ .Get "alt" | default "Portrait" }}" width="160" height="160" />
+{{- else }}
+  {{- warnf "avatar: %s not found under static/" $src }}
+{{- end }}

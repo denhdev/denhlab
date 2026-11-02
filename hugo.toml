@@ -45,12 +45,16 @@ title = 'denhlab'
     pageRef = '/homelab'
     weight = 2
   [[menu.main]]
-    name = 'Search'
+    name = 'About'
+    pageRef = '/about'
     weight = 3
+  [[menu.main]]
+    name = 'Search'
+    weight = 4
     [menu.main.params]
       type = 'search'
   [[menu.main]]
     name = 'Theme'
-    weight = 4
+    weight = 5
     [menu.main.params]
       type = 'theme-toggle'

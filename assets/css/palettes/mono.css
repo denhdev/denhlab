@@ -1,4 +1,4 @@
-/* Mono: warm-neutral grays throughout, with color reserved for the server status lights.
+/* Mono: warm-neutral grays throughout, with color reserved for status lights and amounts.
    Every color the site uses is defined here; custom.css only refers to these names.
    Light values sit on :root, dark values on html.dark (Hextra adds the .dark class). */
 
@@ -16,14 +16,11 @@ html.dark {
   /* Landing graphic: its outlines */
   --color-graphic: #fafaf9;
 
-  /* Landing margin guides and crop marks */
+  /* Margin guides */
   --color-guide: #44403c;
-  --color-crop: #57534e;
 
-  /* Server status lights on the landing graphic, left to right */
+  /* Switch status light on the rack drawings */
   --color-status-1: #2563eb;
-  --color-status-2: #dc2626;
-  --color-status-3: #eab308;
   /* Mini PC power lights */
   --color-status-power: #ffffff;
 
@@ -56,11 +53,8 @@ html.dark {
   --color-graphic: #1c1917;
 
   --color-guide: #d6d3d1;
-  --color-crop: #a8a29e;
 
   --color-status-1: #2563eb;
-  --color-status-2: #dc2626;
-  --color-status-3: #eab308;
   /* Mini PC power lights */
   --color-status-power: #ffffff;
 

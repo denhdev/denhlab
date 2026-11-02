@@ -24,6 +24,10 @@ title = 'denhlab'
     [params.navbar.logo]
       link = '/'
 
+  # No "Powered by Hextra" line at the bottom of the blog and homelab pages.
+  [params.footer]
+    displayPoweredBy = false
+
   [params.blog.list]
     displayTags = false
     sortBy = 'date'

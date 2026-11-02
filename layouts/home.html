@@ -2,15 +2,7 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{- partial "head.html" . -}}
   <body class="landing">
-    {{- /* Print-sheet margin guides with crop marks on each corner. */}}
-    <div class="landing-guides" aria-hidden="true">
-      <span class="guide guide-top"></span><span class="guide guide-bottom"></span>
-      <span class="guide guide-left"></span><span class="guide guide-right"></span>
-      <span class="crop crop-tl-h"></span><span class="crop crop-tl-v"></span>
-      <span class="crop crop-tr-h"></span><span class="crop crop-tr-v"></span>
-      <span class="crop crop-bl-h"></span><span class="crop crop-bl-v"></span>
-      <span class="crop crop-br-h"></span><span class="crop crop-br-v"></span>
-    </div>
+    {{- partial "sheet-guides.html" (dict "nav" false) }}
     {{- /* Light/dark toggle in the top-right corner, inside the guides: Hextra's header toggle. */}}
     <div class="landing-theme">
       {{- partial "theme-toggle.html" (dict "iconHeight" 20 "hideLabel" true "location" "top" "class" "hx:p-2") -}}

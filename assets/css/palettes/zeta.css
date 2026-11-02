@@ -18,14 +18,11 @@ html.dark {
   /* Landing graphic: navy armor, lifted to read on the dark page */
   --color-graphic: #6f86c9;
 
-  /* Landing margin guides and crop marks: navy armor, dark then mid */
+  /* Margin guides: navy armor */
   --color-guide: #262c40;
-  --color-crop: #3e5183;
 
-  /* Server status lights: armor blue, chest red, vent yellow (lifted to read on dark) */
+  /* Switch status light on the rack drawings: armor blue (lifted to read on dark) */
   --color-status-1: #6f86c9;
-  --color-status-2: #d13a40;
-  --color-status-3: #dcb85d;
   /* Mini PC power lights */
   --color-status-power: #ffffff;
 
@@ -61,14 +58,11 @@ html.dark {
   /* Landing graphic: the navy frame */
   --color-graphic: #2f3847;
 
-  /* Landing margin guides and crop marks: armor shadow, then frame gray */
+  /* Margin guides: armor shadow */
   --color-guide: #e2d8d3;
-  --color-crop: #a0a4a8;
 
-  /* Server status lights: frame navy-blue, red, vent yellow */
+  /* Switch status light on the rack drawings: frame navy-blue */
   --color-status-1: #3d5a99;
-  --color-status-2: #bb3a2c;
-  --color-status-3: #daae38;
   /* Mini PC power lights */
   --color-status-power: #ffffff;
 

@@ -1,19 +1,26 @@
 # denhlab
 
-Personal site for [denhlab.com](https://denhlab.com/), built with [Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra) theme (pulled in as a Hugo module).
+Personal site for [denhlab.com](https://denhlab.com/), built with [Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra) theme (a Hugo module, vendored into `_vendor/` so builds don't need Go).
 
 ## Layout
 
 | Path | What it is |
 | --- | --- |
-| `content/_index.md` | Landing page text (headline, tagline, CTA) |
+| `content/_index.md` | Landing page text: headline, tagline, CTA and blog links, and the "Lately" ticker items |
 | `content/blog/` | Blog posts, listed as cards at `/blog/` |
-| `content/homelab/` | Homelab section (Hextra docs layout with sidebar) |
-| `layouts/home.html` | Landing page template and hero graphic |
-| `layouts/blog/list.html` | Blog card grid (overrides Hextra's list) |
-| `assets/css/custom.css` | Styles for the landing page and blog cards |
-| `assets/css/typesets/` | Font sets for the landing page and cards (pick one with `typeset` in `hugo.toml`) |
+| `content/homelab/` | Homelab pages, shown as cards like the blog, ordered by `weight`, with "Last updated" instead of dates |
+| `data/homelab/` | Hardware timeline, certifications timeline and Kubestronaut progress (YAML, newest first) |
+| `layouts/home.html` | Landing page template and rack drawing |
+| `layouts/baseof.html` | Copy of Hextra's base template with the margin guides added |
+| `layouts/blog/list.html`, `single.html` | Card grid and post page (override Hextra's) |
+| `layouts/_shortcodes/` | Elevation drawings (`rack-elevation`, `core-v1-elevation`, `t480-elevation`), `timeline` and `kubestronaut` |
+| `layouts/_partials/sheet-guides.html` | Margin guides on every page |
+| `layouts/_markup/render-table.html` | Tables that stack into cards on phones (five or more columns) |
+| `assets/css/custom.css` | All site styles: drawings, landing page, cards, timeline, tables |
+| `assets/css/typesets/` | Font sets (pick one with `typeset` in `hugo.toml`) |
+| `assets/css/palettes/` | Color sets for light and dark mode (pick one with `palette` in `hugo.toml`) |
 | `static/fonts/` | Self-hosted font files used by the typesets |
+| `static/images/` | Card covers; SVG covers are inlined so they follow light and dark mode |
 | `hugo.toml` | Site config and navbar / mobile menu entries |
 
 ## Development
@@ -47,11 +54,11 @@ sudo firewall-cmd --add-port=1313/tcp
 
 ## Typesets
 
-The landing page and blog cards use one of the font sets in `assets/css/typesets/`, chosen in `hugo.toml`:
+The site uses one of the font sets in `assets/css/typesets/`, chosen in `hugo.toml`:
 
 ```toml
 [params]
-  typeset = 'poster'   # 'swiss', 'editorial', 'technical', 'bauhaus' or 'poster'
+  typeset = 'editorial'   # 'swiss', 'editorial', 'technical', 'bauhaus' or 'poster'
 ```
 
 Try one without editing the config:
@@ -79,6 +86,21 @@ HUGO_PARAMS_PALETTE=mono hugo server
 
 To add a palette, copy `mono.css`, change its values in both modes, and set `palette` to the new file name.
 
+## Landing page
+
+Everything on the landing page is set in `content/_index.md`. The ticker along the bottom reads its label and items from there:
+
+```toml
+  nowPlayingLabel = 'Lately'
+  [[params.nowPlaying]]
+    kind = 'Album'
+    title = 'Parallel – Overwerk'
+```
+
+## Homelab data
+
+The hardware and certifications timelines are drawn from `data/homelab/timeline.yaml` and `data/homelab/certifications.yaml`. Add entries newest first; amounts are positive for money in and negative for money out, and the totals add themselves up. Mark a certification passed in `data/homelab/kubestronaut.yaml` and the progress bar follows.
+
 ## Writing content
 
 ```bash
@@ -92,6 +114,7 @@ Set `draft = false` in the front matter to publish. Optional front matter for bl
 image = '/images/cover.jpg'         # cover image on the card (put file in static/images/)
 tags = ['homelab', 'networking']
 summary = 'One-line description shown on the card.'
+weight = 2                          # homelab pages: card order, lowest first
 ```
 
 ## Build
@@ -104,11 +127,14 @@ hugo --gc --minify
 
 ## Theme
 
-Update Hextra to the latest version:
+Hextra is vendored in `_vendor/`, and Hugo builds from that copy. To update it, fetch the new version and re-vendor:
 
 ```bash
 hugo mod get -u github.com/imfing/hextra
 hugo mod tidy
+hugo mod vendor
 ```
 
-Hextra's source lives in the Hugo module cache (`hugo config | grep cachedir`). To customize a theme template, copy it from there into the same path under `layouts/` and edit the copy.
+Three templates are copies of Hextra's with small changes, so compare them with the new versions in `_vendor/github.com/imfing/hextra/layouts/` after an update: `layouts/baseof.html` (adds the margin guides), `layouts/blog/single.html` ("Last updated" for homelab pages) and `layouts/blog/list.html` (card grid).
+
+To customize another theme template, copy it from `_vendor/github.com/imfing/hextra/layouts/` into the same path under `layouts/` and edit the copy.

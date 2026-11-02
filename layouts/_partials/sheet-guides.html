@@ -1,0 +1,7 @@
+{{- /* Print-sheet margin guides. Pass "nav" true on pages with the site header: its bottom rule
+       stands in for the top guide, and there's no bottom guide, so only the side guides are drawn
+       (see .sheet-guides-nav in custom.css). */ -}}
+<div class="sheet-guides{{ if .nav }} sheet-guides-nav{{ end }}" aria-hidden="true">
+  {{- if not .nav }}<span class="guide guide-top"></span><span class="guide guide-bottom"></span>{{ end }}
+  <span class="guide guide-left"></span><span class="guide guide-right"></span>
+</div>

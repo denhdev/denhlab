@@ -511,23 +511,23 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
   --landing-muted: var(--color-muted);
   --landing-accent: var(--site-accent);
   --landing-guide: var(--color-guide);
-  --landing-crop: var(--color-crop);
   /* Sheet margin: distance from the screen edge to each guide line. Shared by the guides and
      the now-playing marquee that runs along them. */
-  --m: clamp(12px, 3.5vw, 40px);
+  --m: var(--sheet-margin);
   background: var(--landing-bg);
   color: var(--landing-fg);
 }
 
-/* ---------- Landing margin guides and crop marks ----------
-   Hairline guides run edge to edge at the sheet margin; heavier crop marks sit on the same
-   lines in each corner, between the screen edge and where the guides cross. The margin scales
-   with the screen and stays clear of the text, which is padded further in. */
+/* ---------- Margin guides (_partials/sheet-guides.html) ----------
+   Hairline guides run edge to edge at the sheet margin. The margin scales with the screen and
+   stays clear of the text, which is padded further in. On the landing page they sit behind the
+   content; on other pages, see .sheet-guides-nav below. */
 
-.landing-guides {
-  --mark: calc(var(--m) * 0.75);       /* crop mark length, from the screen edge inward */
-  --mark-gap: 0px;                     /* space between screen edge and crop mark */
-  --mark-w: 1.5px;                     /* crop mark weight */
+:root { --sheet-margin: clamp(12px, 3.5vw, 40px); }
+
+.sheet-guides {
+  --m: var(--sheet-margin);
+  --guide: var(--color-guide);
   position: fixed;
   inset: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
          env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
@@ -537,7 +537,7 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
 
 .landing-main { position: relative; z-index: 1; }
 
-.landing-guides span { position: absolute; background: var(--landing-guide); }
+.sheet-guides span { position: absolute; background: var(--guide); }
 
 /* Guides are 1px boxes scaled to half, so they draw as hairlines on high-density screens
    and as faint single pixels elsewhere. Each line's centre sits at margin + 0.5px. */
@@ -548,18 +548,22 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
 .guide-left { left: var(--m); }
 .guide-right { right: var(--m); }
 
-/* Crop marks, centred on the guides. */
-.landing-guides .crop { background: var(--landing-crop); }
-.crop[class*="-h"] { width: var(--mark); height: var(--mark-w); }
-.crop[class*="-v"] { height: var(--mark); width: var(--mark-w); }
-.crop-tl-h, .crop-tr-h { top: calc(var(--m) + 0.5px - var(--mark-w) / 2); }
-.crop-bl-h, .crop-br-h { bottom: calc(var(--m) + 0.5px - var(--mark-w) / 2); }
-.crop-tl-h, .crop-bl-h { left: var(--mark-gap); }
-.crop-tr-h, .crop-br-h { right: var(--mark-gap); }
-.crop-tl-v, .crop-bl-v { left: calc(var(--m) + 0.5px - var(--mark-w) / 2); }
-.crop-tr-v, .crop-br-v { right: calc(var(--m) + 0.5px - var(--mark-w) / 2); }
-.crop-tl-v, .crop-tr-v { top: var(--mark-gap); }
-.crop-bl-v, .crop-br-v { bottom: var(--mark-gap); }
+/* Pages with the site header: the header's bottom rule is the top guide, there's no bottom guide
+   (it would cross the content as it scrolls), and the side guides run up through the header to
+   the top edge as on the landing page. Drawn above the header (and, being hairlines with
+   pointer-events off, over the page) so they show there. */
+.sheet-guides-nav { z-index: 25; }
+
+/* Header contents sit inside the side guides, lined up with the page's own left edge. */
+.hextra-nav-container nav { padding-inline: max(1.5rem, calc(var(--sheet-margin) + 0.5rem)); }
+
+/* Hextra pulls the table of contents' scroll area 1rem to the right, so its divider ran past the
+   right guide; pull it back in so it stops just inside. */
+.hextra-toc > div { margin-inline-end: 0.5rem; }
+
+/* The header's bottom rule, redrawn as a guide: same colour and hairline weight. */
+.hextra-nav-container-blur,
+html.dark .hextra-nav-container-blur { box-shadow: 0 0.5px 0 var(--color-guide); }
 
 .landing-main {
   min-height: 100vh;
@@ -688,8 +692,6 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
 /* Status lights: one deliberate pop of primary color, the only color on the landing page.
    Each color blinks on its own offset so the rack doesn't pulse in unison. */
 .landing-led.led-blue { fill: var(--color-status-1); }
-.landing-led.led-red { fill: var(--color-status-2); animation-delay: calc(var(--i) * 0.35s + 0.8s); }
-.landing-led.led-yellow { fill: var(--color-status-3); animation-delay: calc(var(--i) * 0.35s + 1.6s); }
 /* Mini PC power lights are white, so a hairline outline keeps them visible on a light page. */
 .landing-led.led-power {
   fill: var(--color-status-power);

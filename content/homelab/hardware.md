@@ -14,10 +14,10 @@ summary = 'The machines in the lab: what each one runs, what it cost, and where 
 | Name            |Role              | OS              | Device                           | Processor        | RAM        | Storage              | Cost                 |
 |-----------------|------------------|-----------------|----------------------------------|------------------|------------|----------------------|----------------------|
 |minovsky         | 1 · Managed Switch | RouterOS        | **Mikrotik CRS310-8G+2S+IN**     | 98DX226S         | 256 MB     | 32 MB                | $200 · Amazon        |
-|rx78             | 5 · Kubernetes node | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 512 GB SSD           | $70 · eBay           |
-|mkii             | 4 · Kubernetes node | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 256 GB SSD           | $70 · eBay           |
-|zeta             | 3 · Kubernetes node | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 256 GB SSD           | $70 · eBay           |
-|zz               | GPU Node         | Ubuntu 24.04    | **Custom Built** Details below   | AMD Ryzen 5 5500 | 32 GB      | 2 TB SSD             | $825 · Newegg, eBay  |
+|rx78             | 5 · K8s Control Plane | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 512 GB SSD           | $70 · eBay           |
+|mkii             | 4 · K8s Worker | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 256 GB SSD           | $70 · eBay           |
+|zeta             | 3 · K8s Worker | Arch Linux, k3s | **HP EliteDesk 800 G2**          | Intel i5-6500T   | 16 GB      | 256 GB SSD           | $70 · eBay           |
+|zz               | GPU Node         | Ubuntu 24    | **Custom Built** Details below   | AMD Ryzen 5 5500 | 32 GB      | 2 TB SSD             | $825 · Newegg, eBay  |
 
 ## GPU Node
 

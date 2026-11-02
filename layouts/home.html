@@ -11,6 +11,10 @@
       <span class="crop crop-bl-h"></span><span class="crop crop-bl-v"></span>
       <span class="crop crop-br-h"></span><span class="crop crop-br-v"></span>
     </div>
+    {{- /* Light/dark toggle in the top-right corner, inside the guides: Hextra's header toggle. */}}
+    <div class="landing-theme">
+      {{- partial "theme-toggle.html" (dict "iconHeight" 20 "hideLabel" true "location" "top" "class" "hx:p-2") -}}
+    </div>
     <main id="content" class="landing-main">
       <div class="landing-graphic" aria-hidden="true">
         {{- /* Hero graphic: a drafted front elevation of rack units with blinking status lights.

@@ -706,6 +706,18 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
   .landing-led { animation: none; }
 }
 
+/* Theme toggle, tucked into the top-right corner just inside the guides. */
+.landing-theme {
+  position: fixed;
+  top: calc(var(--m) + 0.25rem);
+  right: calc(var(--m) + 0.25rem);
+  z-index: 2;
+  color: var(--landing-muted);
+}
+
+.landing-theme .hextra-theme-toggle { transition: color 0.2s ease; }
+.landing-theme .hextra-theme-toggle:hover { color: var(--landing-fg); }
+
 /* ---------- Now playing marquee ----------
    A ticker sitting just inside the bottom guide, between the left and right guides. The track
    holds the text eight times and slides by half its length, so the loop is seamless at any
@@ -743,7 +755,6 @@ html.dark .content ul.timeline-key { --tl-paper: var(--hx-color-dark); }
 
 .landing-marquee-run { margin: 0; padding-inline-end: 4rem; }
 .landing-marquee-run > span + span::before { content: "·"; margin-inline: 1.25em; }
-.landing-marquee-label { color: var(--landing-muted); }
 
 @keyframes landing-marquee-x { to { transform: translateX(-50%); } }
 @keyframes landing-marquee-y { to { transform: translateY(-50%); } }

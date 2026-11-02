@@ -10,5 +10,8 @@ title = 'denhlab'
   # headline = 'Building, breaking, and *writing it down.*'
   # tagline = 'A blog about software, self-hosting, and the homelab running in the closet.'
   ctaText = 'Enter the lab'
-  ctaLink = '/blog/'
+  ctaLink = '/homelab/'
+  # A quieter second link beside the CTA.
+  secondaryText = 'Read the blog'
+  secondaryLink = '/blog/'
 +++

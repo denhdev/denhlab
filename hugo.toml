@@ -20,9 +20,9 @@ title = 'denhlab'
   [params.navbar]
     displayTitle = true
     displayLogo = false
-    # The landing page is a splash; the site header takes you into the blog.
+    # The site title in the header goes back to the landing page.
     [params.navbar.logo]
-      link = '/blog/'
+      link = '/'
 
   [params.blog.list]
     displayTags = false

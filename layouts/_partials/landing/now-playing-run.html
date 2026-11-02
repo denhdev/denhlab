@@ -1,4 +1,0 @@
-{{- /* One pass of the now-playing marquee: a label, then each item as "Kind: Title", separated by
-       dots in CSS. Takes the label and the home page's nowPlaying list. */ -}}
-<span class="landing-marquee-label">{{ .label }}</span>
-{{- range .items }}<span>{{ .kind }}: {{ .title }}</span>{{ end -}}

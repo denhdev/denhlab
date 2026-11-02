@@ -4,7 +4,7 @@ draft = false
 title = 'State of the Homelab, Late 2026'
 image = '/images/state-of-the-lab.svg'
 tags = ['homelab', 'kubernetes', 'certifications']
-summary = 'A low-spec, secondhand homelab that can still run production-style Kubernetes, paid for by old hobbies, and two of five exams down on the road to Kubestronaut.'
+summary = 'A low-spec, homelab that can still run production-style Kubernetes and two of five exams down on the road to Kubestronaut.'
 +++
 
 This is the first real post on the site, so it's a status report: what's in the lab, what it's for, what it isn't doing yet, and where I am on the road to Kubestronaut.

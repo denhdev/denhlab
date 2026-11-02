@@ -15,12 +15,19 @@ title = 'denhlab'
   secondaryText = 'Read the blog'
   secondaryLink = '/blog/'
   # Now playing marquee along the bottom of the landing page; each item reads "Kind: Title".
+  nowPlayingLabel = 'Lately'
   [[params.nowPlaying]]
     kind = 'Album'
-    title = 'Overwerk – Parallel'
+    title = 'Parallel – Overwerk'
   [[params.nowPlaying]]
     kind = 'GBA'
     title = 'Metroid Zero Mission'
+  [[params.nowPlaying]]
+    kind = 'Fiction'
+    title = 'Iron Gold – Pierce Brown'
+  [[params.nowPlaying]]
+    kind = 'Non-fiction'
+    title = 'Shaolin Spirit – Shi Heng Yi'
   [[params.nowPlaying]]
     kind = 'Film'
     title = 'Shaolin Soccer'

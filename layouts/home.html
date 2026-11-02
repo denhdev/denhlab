@@ -155,7 +155,7 @@
            eight times, so half the track is wider than even a large screen and the scroll by half
            loops seamlessly; the copies are hidden from screen readers. */}}
     {{- with .Params.nowPlaying }}
-      {{- $run := partial "landing/now-playing-run.html" . }}
+      {{- $run := partial "landing/now-playing-run.html" (dict "label" ($.Params.nowPlayingLabel | default "Now playing") "items" .) }}
       <div class="landing-marquee">
         <div class="landing-marquee-track">
           {{- range $i, $_ := seq 8 }}
